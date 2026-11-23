@@ -502,7 +502,7 @@ class Component extends DCLogic {
     var imgSlots = slotDefs.map(function (d) {
       var im = IM[d[0]], busy = s.imgBusy === d[0];
       return { key: d[0], label: d[1], en: d[2], where: '會放在：' + d[3], note: d[4], has: !!im, empty: !im, src: im ? im.src : '',
-        cls: busy ? 'is-busy' : '', pickLabel: busy ? '處理中…' : im ? '換一張' : '選擇圖片',
+        cls: busy ? 'is-busy' : im ? 'has' : '', pickLabel: busy ? '處理中…' : im ? '換一張' : '選擇圖片',
         pick: function (e) { self.pickImage(d[0], e); },
         clear: function () { var n = Object.assign({}, self.state.imgs); n[d[0]] = null; self.setState({ imgs: n }); } };
     });

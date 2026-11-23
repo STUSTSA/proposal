@@ -335,3 +335,39 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 @keyframes fadeIn{from{opacity:0}}
 /* 關閉：全部不動 */
 :root[data-motion="off"] *,:root[data-motion="off"] *::before,:root[data-motion="off"] *::after{animation:none!important;transition:none!important}
+
+/* ---------- 會動的操作圖示（.ai；動畫設定「關閉」時全部靜止） ----------
+   閒置時偶爾動一下，提示「這裡可以按」；滑過或按下時動作更明顯。 */
+.ai{flex:none;overflow:visible;display:block}
+.ai .ai-m{transform-box:fill-box;transform-origin:center;transition:transform .35s var(--spring)}
+.card-ico{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--ink) 9%,transparent);margin-bottom:4px}
+.card:not(.dashed) .card-ico{background:color-mix(in srgb,#fff 35%,transparent)}
+.pick-cue{display:inline-flex;align-items:center;gap:6px}
+.round svg{transition:transform .45s var(--spring)}
+@keyframes ai-nudge{0%,62%,100%{transform:none}72%{transform:translateX(4px)}82%{transform:translateX(-1px)}90%{transform:translateX(2px)}}
+@keyframes ai-up{0%,58%,100%{transform:none}70%{transform:translateY(-4px)}82%{transform:translateY(1px)}90%{transform:none}}
+@keyframes ai-down{0%,58%,100%{transform:none}70%{transform:translateY(4px)}82%{transform:translateY(-1px)}90%{transform:none}}
+@keyframes ai-write{0%,55%,100%{transform:none}64%{transform:translate(-2px,2px) rotate(-10deg)}73%{transform:translate(2px,0) rotate(4deg)}82%{transform:translate(-1px,1px) rotate(-6deg)}}
+@keyframes ai-twinkle{0%,70%,100%{transform:none}80%{transform:scale(1.25) rotate(20deg)}}
+/* 閒置提示：只放在「下一個該按的」地方，不會整頁都在動 */
+:root:not([data-motion="off"]) .btn.primary .ai-next .ai-m{animation:ai-nudge 2.6s var(--ease) infinite}
+:root:not([data-motion="off"]) .card-ico .ai-pen .ai-m{animation:ai-write 3s var(--ease) infinite}
+:root:not([data-motion="off"]) .card-ico .ai-up .ai-m,
+:root:not([data-motion="off"]) .up:not(.has) .up-pick .ai-up .ai-m{animation:ai-up 2.8s var(--ease) infinite}
+:root:not([data-motion="off"]) .export-btns .btn.primary:not(:disabled) .ai-down .ai-m{animation:ai-down 2.6s var(--ease) infinite}
+:root:not([data-motion="off"]) .btn .ai-spark .ai-m{animation:ai-twinkle 4s var(--ease) infinite}
+/* 滑過／按下 */
+@media (hover:hover){
+  :root:not([data-motion="off"]) .btn:hover .ai-next .ai-m{animation:none;transform:translateX(4px)}
+  :root:not([data-motion="off"]) .btn:hover .ai-prev .ai-m{transform:translateX(-4px)}
+  :root:not([data-motion="off"]) .btn:hover .ai-plus .ai-m{transform:rotate(90deg)}
+  :root:not([data-motion="off"]) .btn:hover .ai-up .ai-m,:root:not([data-motion="off"]) .card:hover .ai-up .ai-m{animation:none;transform:translateY(-4px)}
+  :root:not([data-motion="off"]) .btn:hover .ai-down .ai-m{animation:none;transform:translateY(4px)}
+  :root:not([data-motion="off"]) .btn:hover .ai-zoom .ai-m{transform:scale(1.18)}
+  :root:not([data-motion="off"]) .btn:hover .ai-home .ai-m{transform:translateY(-2px)}
+  :root:not([data-motion="off"]) .btn:hover .ai-list .ai-m{transform:scale(1.25)}
+  :root:not([data-motion="off"]) [data-theme-toggle]:hover svg{transform:rotate(180deg)}
+  :root:not([data-motion="off"]) [data-settings]:hover svg{transform:rotate(-25deg) scale(1.08)}
+}
+:root:not([data-motion="off"]) .btn:active .ai .ai-m{transform:scale(.85)}
+:root[data-motion="off"] .ai .ai-m{animation:none!important;transition:none!important}
