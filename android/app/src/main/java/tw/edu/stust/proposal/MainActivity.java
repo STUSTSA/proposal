@@ -34,7 +34,7 @@ import java.io.OutputStream;
 import java.util.regex.Pattern;
 
 /**
- * 企劃書產生器的安卓外殼。
+ * Noah 企劃書的安卓外殼。
  * - 網站檔案打包在 APK 的 assets/www，用 WebViewAssetLoader 以 https://appassets.androidplatform.net/ 提供：沒網路也能填寫與匯出。
  * - 匯出的 Word／PDF：網頁呼叫 ProposalApp.saveFile(檔名, 類型, base64)，存到「下載」資料夾（Android 10 以上），舊版手機讓使用者選位置。
  * - 網頁裡的 <input type=file>（匯入 Word、選圖片）交給系統的檔案選擇器。

@@ -1,6 +1,6 @@
 {
-  "name": "活動企劃書產生器",
-  "short_name": "企劃書",
+  "name": "Noah 企劃書",
+  "short_name": "Noah 企劃書",
   "description": "照著步驟填寫，一鍵匯出符合南臺科技大學課外活動組格式的活動企劃書 Word 與 PDF。",
   "lang": "zh-Hant",
   "start_url": "./",
