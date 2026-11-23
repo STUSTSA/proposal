@@ -1,5 +1,5 @@
 /* 離線快取：網站檔案先用快取、背景更新（stale-while-revalidate）；Google 字型同樣快取。改版時把 VERSION 加一。 */
-var VERSION = 'proposal-v7';
+var VERSION = 'proposal-v8';
 var CORE = ['./', 'index.html', 'css/app.css', 'js/theme.js', 'js/pwa.js', 'js/settings.js', 'js/motion.js', 'css/themes.css', 'js/vendor/jszip.min.js', 'js/vendor/html2canvas.min.js',
   'js/vendor/jspdf.umd.min.js', 'js/vendor/morphdom.js', 'js/fill-docx.js', 'js/pdf.js', 'js/template-b64.js', 'js/dc-runtime.js', 'js/app.js',
   'manifest.webmanifest', 'assets/cover-seal.png', 'icons/favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];

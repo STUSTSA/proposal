@@ -2,5 +2,5 @@
 <resources>
     <!-- 啟動時的底色（跟網頁米黃底一致）；網頁載入後由 App 依 meta theme-color 換成當下深淺色 -->
     <color name="app_bg">#F5F0E1</color>
-    <color name="icon_bg">#0A2A4D</color>
+    <color name="icon_bg">#FFFFFF</color>
 </resources>
