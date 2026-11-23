@@ -47,8 +47,8 @@
       <div class="top-name"><span class="en">PROPOSAL BUILDER</span><b>活動企劃書產生器</b></div>
     </div>
     <div class="top-r">
-      <button type="button" class="round" data-theme-toggle aria-label="切換深淺色"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"></path></svg></button>
-      <button type="button" class="round" data-settings aria-label="外觀：主題、深淺色、動畫"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h10M18 8h2M4 16h3M11 16h9"></path><circle cx="16" cy="8" r="2.2"></circle><circle cx="9" cy="16" r="2.2"></circle></svg></button>
+      <button type="button" class="round" data-theme-toggle aria-label="切換深淺色"><svg width="22" height="22" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"></path></svg></button>
+      <button type="button" class="round" data-settings aria-label="外觀：主題、深淺色、動畫"><svg width="22" height="22" style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6c1.3 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a3.8 3.8 0 0 0 3.8-3.8c0-4.2-3.9-7.6-8.8-7.6z"></path><circle cx="7.6" cy="11.4" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="10.4" cy="7.4" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="15.2" cy="7.6" r="1.3" fill="currentColor" stroke="none"></circle></svg></button>
     </div>
     <div class="hero-main">
       <div class="hero-l">
@@ -60,7 +60,7 @@
       </div>
       <div class="hero-r" aria-label="目前步驟">
         <div class="bigdate">{{stepNum}}<small>/08</small></div>
-        <div class="dow"><span>COMPLETED</span><span class="circ">{{doneCount}}/8</span></div>
+        <div class="dow">STEP</div>
       </div>
     </div>
   </header>
@@ -108,7 +108,8 @@
               <span class="k">02 — IMPORT</span>
               <span class="t">匯入 Word 原檔</span>
               <span class="sub">選擇用本工具匯出的 .docx，內容會自動帶回各步驟。</span>
-              <input type="file" accept=".docx" onChange="{{onImport}}">
+              <span class="pick-cue">選擇 .docx 檔</span>
+              <input type="file" accept=".docx" class="sr" onChange="{{onImport}}">
             </label>
           </div>
           <p class="note"><b>固定條文自動帶入：</b>一般規定或注意事項、緊急應變措施與性平宣導六點，會依學校範本原文放進企劃書，不用重打。</p>
@@ -289,7 +290,7 @@
         <div class="step-body" id="body-8">
           <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
           <section class="uploads" aria-label="圖片與簽名">
-            <div class="up-title">圖片與簽名<span class="en" style="margin-left: 8px">IMAGES</span><span class="sub" style="margin-left: auto; letter-spacing: 0">選填，放上去會出現在 Word 和 PDF 對應的位置</span></div>
+            <div class="up-title">圖片與簽名<span class="en" style="margin-left: 8px">IMAGES</span><span class="sub up-note">選填，放上去會出現在 Word 和 PDF 對應的位置</span></div>
             <div class="up-grid">
               <sc-for list="{{imgSlots}}" as="u" hint-placeholder-count="3">
                 <div class="up {{u.cls}}">
@@ -392,7 +393,7 @@
             </sc-for>
           </div>
         </div>
-        <article class="paper" style="width: 100%; max-width: 49.6em; min-height: 70.2em; box-sizing: border-box; padding: 3em 3.4em 1.6em; background: #FFFFFF; border: 1px solid #E2E2E8; box-shadow: 0 2px 4px rgba(17,17,20,0.06), 0 10px 24px -8px rgba(17,17,20,0.22); font-family: DFKai-SB, '標楷體', BiauKai, 'LXGW WenKai TC', serif; font-size: {{pz.font}}px; line-height: 1.5; color: #221F1F; display: flex; flex-direction: column">
+        <article class="paper" style="width: 100%; max-width: 49.6em; min-height: 70.2em; box-sizing: border-box; padding: 3em 3.4em 1.6em; background: #FFFFFF; font-family: DFKai-SB, '標楷體', BiauKai, 'LXGW WenKai TC', serif; font-size: {{pz.font}}px; line-height: 1.5; color: #221F1F; display: flex; flex-direction: column">
 
           <!-- 封面 -->
           <sc-if value="{{isP1}}" hint-placeholder-val="{{true}}">
@@ -577,7 +578,6 @@
 <script src="js/template-b64.js"></script>
 <script src="js/dc-runtime.js"></script>
 <script src="js/app.js"></script>
-<script src="js/ui.js"></script>
 <script src="js/settings.js"></script>
 <script src="js/motion.js"></script>
 <script src="js/pwa.js"></script>

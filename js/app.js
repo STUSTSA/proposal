@@ -3,7 +3,7 @@
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = Object.assign(this.blank(), { dlStatus: 'wait', libsOk: false, intro: true });
+    this.state = Object.assign(this.blank(), { dlStatus: 'browser', libsOk: false, intro: true });
   }
 
   blank() {
@@ -54,17 +54,6 @@ class Component extends DCLogic {
     return s;
   }
 
-  // 畫板在沙盒 iframe 裡（不允許直接下載），所以往上找有 Claude 下載功能的視窗
-  findHost() {
-    var w = window;
-    for (var i = 0; i < 6 && w; i++) {
-      try { if (w.claude && typeof w.claude.use === 'function') return w; } catch (e) { /* 跨網域就停 */ return null; }
-      if (w === w.parent) break;
-      w = w.parent;
-    }
-    return null;
-  }
-
   componentDidMount() {
     var self = this;
     // 安卓 App 的返回鍵：先關放大預覽，再回上一步；都沒有才交給 App（離開）
@@ -75,17 +64,8 @@ class Component extends DCLogic {
       return false;
     };
     this._it = setTimeout(function () { self.setState({ intro: false }); }, 1400);
-    this._dl = null;
-    var host = this.findHost();
-    this._host = host;
-    if (window.ProposalApp) { this.setState({ dlStatus: 'app' }); }
-    else if (!host) { this.setState({ dlStatus: 'browser' }); }
-    else {
-      this.setState({ dlStatus: 'wait' });
-      this._dlP = host.claude.use('downloads').then(function (d) {
-        self._dl = d; self.setState({ dlStatus: d ? 'ok' : 'none' }); return d;
-      }, function () { self.setState({ dlStatus: 'none' }); return null; });
-    }
+    // 下載方式：安卓 App 交給 App 存檔，其他一律瀏覽器直接下載
+    this.setState({ dlStatus: window.ProposalApp ? 'app' : 'browser' });
     // 偵測匯出元件是否載入
     var tries = 0;
     var check = function () {
@@ -201,45 +181,27 @@ class Component extends DCLogic {
 
   // 回傳一句給「下載」步驟顯示的結果；失敗時丟出錯誤，讓過程面板標紅
   deliver(blob, name, size) {
-    var self = this;
     this._last = { blob: blob, name: name, size: size };
     this.setState({ dl: { name: name, size: size } });
-    var ready = this._dl ? Promise.resolve(this._dl) : (this._dlP || Promise.resolve(null));
-    return ready.then(function (dl) {
-      if (window.ProposalApp && typeof window.ProposalApp.saveFile === 'function') {
-        // 安卓 App：交給 App 存到手機的「下載」資料夾（WebView 不支援 blob 下載）
-        return new Promise(function (resolve, reject) {
-          var fr = new FileReader();
-          fr.onload = function () {
-            var b64 = String(fr.result).split(',')[1] || '';
-            var msg = window.ProposalApp.saveFile(name, blob.type || 'application/octet-stream', b64);
-            if (/^ERR:/.test(msg)) reject(new Error('儲存失敗：' + msg.slice(4)));
-            else resolve(name + '（' + size + '）' + msg);
-          };
-          fr.onerror = function () { reject(new Error('讀取檔案失敗')); };
-          fr.readAsDataURL(blob);
-        });
-      }
-      if (!dl || typeof dl.save !== 'function') {
-        var url = URL.createObjectURL(blob), a = document.createElement('a');
-        a.href = url; a.download = name; a.style.display = 'none';
-        document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
-        return name + '（' + size + '）已下載，請看瀏覽器的下載清單';
-      }
-      return blob.arrayBuffer().then(function (buf) {
-        var H = self._host || window;
-        var data = new H.Blob([buf], { type: blob.type || 'application/octet-stream' });
-        return dl.save({ filename: name, data: data });
-      }).then(function (res) {
-        return name + '（' + size + '）' + (res && res.status === 'delivered' ? '已送出' : '已儲存到你的電腦');
-      }, function (err) {
-        var code = (err && err.code) || '';
-        var why = { declined: '你在確認視窗按了取消', rate_limited: '已經有一個下載確認視窗開著，請先處理它', rejected_extension: '這個副檔名不被允許下載',
-          extension_not_enabled: '此畫面暫時不開放這種檔案下載', unavailable: '此畫面無法下載', not_granted: '下載權限沒有被允許', bad_request: '檔案資料有問題' }[code];
-        throw new Error((why || (err && err.message) || '下載失敗') + (code ? '（' + code + '）' : ''));
+    if (window.ProposalApp && typeof window.ProposalApp.saveFile === 'function') {
+      // 安卓 App：交給 App 存到手機的「下載/企劃書」（WebView 不支援 blob 下載）
+      return new Promise(function (resolve, reject) {
+        var fr = new FileReader();
+        fr.onload = function () {
+          var b64 = String(fr.result).split(',')[1] || '';
+          var msg = window.ProposalApp.saveFile(name, blob.type || 'application/octet-stream', b64);
+          if (/^ERR:/.test(msg)) reject(new Error('儲存失敗：' + msg.slice(4)));
+          else resolve(name + '（' + size + '）' + msg);
+        };
+        fr.onerror = function () { reject(new Error('讀取檔案失敗')); };
+        fr.readAsDataURL(blob);
       });
-    });
+    }
+    var url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = name; a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+    return Promise.resolve(name + '（' + size + '）已下載，請看瀏覽器的下載清單');
   }
 
   redownload() {
@@ -398,7 +360,6 @@ class Component extends DCLogic {
 
   renderVals() {
     var self = this, s = this.state, f = s.f;
-    var accent = this.props.accent ?? '#1F5F8B';
     var labels = ['基本資料', '時間地點與人數', '活動內容', '人員配置表', '活動流程表', '經費預算表', '自我檢核', '預覽與匯出'];
     var hints = [
       '這些會出現在企劃書抬頭與第 2–5 點。',
@@ -417,7 +378,6 @@ class Component extends DCLogic {
     var steps = labels.map(function (label, i) {
       var n = i + 1, cur = s.step === n, done = self.stepDone(n);
       return { n: n, nn: (n < 10 ? '0' : '') + n, cls: cur ? 'is-cur' : '', label: label, done: done, notDone: !done, aria: cur ? 'step' : 'false',
-        bg: cur ? '#E3ECF4' : 'transparent', fg: cur ? '#16466A' : '#1C2230', fw: cur ? '700' : '400',
         go: function () { self.setState({ step: n }); } };
     });
     var doneCount = steps.filter(function (x) { return x.done; }).length;
@@ -447,13 +407,11 @@ class Component extends DCLogic {
       return { n: i + 1, nn: '0' + (i + 1), q: d[0], hint: d[1], opts: d[2].map(function (label) {
         var picked = s.checks[i] === label;
         return { label: label, on: picked ? 'true' : 'false', cls: picked ? 'is-on' : '',
-          bg: picked ? accent : '#FFFFFF', fg: picked ? '#FFFFFF' : '#1C2230', bd: picked ? accent : '#CFCCC4',
           pick: function () { var c = s.checks.slice(); c[i] = label; self.setState({ checks: c }); } };
       }) };
     });
     var checkedCount = s.checks.filter(function (c) { return c !== null; }).length;
 
-    var pill = function (onState) { return onState ? { bg: accent, fg: '#FFFFFF', bd: accent } : { bg: '#FFFFFF', fg: '#1C2230', bd: '#CFCCC4' }; };
     var feeYesOn = f.fee === '有收費';
 
     var missing = [];
@@ -494,7 +452,7 @@ class Component extends DCLogic {
     var pageLabels = ['封面', '內文', '附件一、二', '附件三・注意事項'];
     var pages = pageLabels.map(function (label, i) {
       var sel = curPage === i;
-      return { label: label, sel: sel ? 'true' : 'false', cls: sel ? 'is-on' : '', bg: sel ? '#1C2230' : '#FFFFFF', fg: sel ? '#FFFFFF' : '#1C2230', bd: sel ? '#1C2230' : '#CFCCC4',
+      return { label: label, sel: sel ? 'true' : 'false', cls: sel ? 'is-on' : '',
         go: function () { self.setState({ page: i, pageStep: s.step }); } };
     });
     var zoom = !!s.zoom;
@@ -525,19 +483,15 @@ class Component extends DCLogic {
 
     var jobView = null;
     if (s.job) {
-      var stl = { todo: ['#FFFFFF', '#CFCCC4', '#5B6270', '#5B6270', '400'], active: ['#E3ECF4', accent, accent, '#1C2230', '700'],
-        done: ['#2E7D5B', '#2E7D5B', '#FFFFFF', '#1C2230', '500'], error: ['#B3261E', '#B3261E', '#FFFFFF', '#B3261E', '700'] };
       var doneN = 0;
       var jst = s.job.stages.map(function (g, i) {
-        var c = stl[g.status] || stl.todo;
         if (g.status === 'done') doneN += 1;
-        return { cls: 'is-' + (g.status || 'todo'), label: g.label, detail: g.detail, mark: g.status === 'done' ? '✓' : g.status === 'error' ? '!' : g.status === 'active' ? '…' : String(i + 1),
-          bg: c[0], bd: c[1], fg: c[2], tc: c[3], fw: c[4], aria: g.status === 'active' ? 'step' : 'false' };
+        return { cls: 'is-' + (g.status || 'todo'), label: g.label, detail: g.detail, aria: g.status === 'active' ? 'step' : 'false' };
       });
       var st = s.job.state;
       jobView = { title: s.job.kind === 'docx' ? '匯出 Word' : '匯出 PDF', en: s.job.kind === 'docx' ? 'DOCX EXPORT' : 'PDF EXPORT', barCls: st === 'done' ? 'done' : '', stages: jst,
         pct: st === 'done' ? 100 : Math.round(doneN / jst.length * 100),
-        statusText: st === 'done' ? '完成' : st === 'error' ? '失敗' : '進行中…', statusColor: st === 'done' ? 'var(--ok)' : st === 'error' ? 'var(--red)' : 'var(--ink)',
+        statusText: st === 'done' ? '完成' : st === 'error' ? '失敗' : '進行中…', statusColor: st === 'done' ? 'var(--ok)' : st === 'error' ? 'var(--late)' : 'var(--ink)',
         thumbs: s.job.thumbs, hasThumbs: s.job.thumbs.length > 0, isDone: st === 'done' };
     }
     var IM = s.imgs || {};
@@ -563,14 +517,14 @@ class Component extends DCLogic {
       heroPill: step > 0 ? 'STEP ' + (step < 10 ? '0' : '') + step : 'START',
       heroPillZh: step > 0 ? labels[step - 1] : '開始',
       feeYesCls: f.fee === '有收費' ? 'is-on' : '', feeNoCls: f.fee === '有收費' ? '' : 'is-on',
-      accent: accent, f: f, on: on, step: step, steps: steps, doneCount: doneCount,
+      f: f, on: on, step: step, steps: steps, doneCount: doneCount,
       isS0: step === 0, isS1: step === 1, isS2: step === 2, isS3: step === 3, isS4: step === 4,
       isS5: step === 5, isS6: step === 6, isS7: step === 7, isS8: step === 8,
       inStep: step > 0, notLast: step > 0 && step < 8,
       stepTitle: step > 0 ? labels[step - 1] : '', stepHint: step > 0 ? hints[step - 1] : '',
       nextLabel: step > 0 && step < 8 ? labels[step] : '',
       totalPeople: staffCount + part,
-      feeYesOn: feeYesOn, feeNoOn: !feeYesOn, feeYesStyle: pill(feeYesOn), feeNoStyle: pill(!feeYesOn),
+      feeYesOn: feeYesOn, feeNoOn: !feeYesOn,
       feeYes: function () { self.setF('fee', '有收費'); }, feeNo: function () { self.setF('fee', '無收費'); },
       staffRows: this.rows('staff', ['title', 'name', 'sid', 'job', 'note']),
       flowRows: this.rows('flow', ['date', 'time', 'content', 'place', 'note']),
@@ -609,14 +563,13 @@ class Component extends DCLogic {
         self.importDocx(file);
         try { input.value = ''; } catch (err) { /* 允許再次選同一個檔 */ }
       },
-      busyAny: !!s.busy, hasJob: !!jobView, job: jobView || { title: '', stages: [], pct: 0, statusText: '', statusColor: '#5B6270', thumbs: [], hasThumbs: false, isDone: false },
-      clearJob: function () { self.setState({ job: null }); },
+      busyAny: !!s.busy, hasJob: !!jobView, job: jobView || { title: '', stages: [], pct: 0, statusText: '', statusColor: 'var(--muted)', thumbs: [], hasThumbs: false, isDone: false },
       wordLabel: s.busy === 'docx' ? '產生 Word 中…' : '下載 Word（.docx）',
       pdfLabel: s.busy === 'pdf' ? '排版 PDF 中…' : '下載 PDF',
       hasDl: !!s.dl, dl: s.dl || { name: '', size: '' },
       redownload: function () { self.redownload(); },
-      sysLine: (s.libsOk ? '匯出元件：已就緒' : '匯出元件：載入中…') + '　·　' + (s.dlStatus === 'ok' ? '下載通道：已連上' : s.dlStatus === 'browser' ? '下載：瀏覽器直接下載' : s.dlStatus === 'app' ? '下載：存到手機的「下載/企劃書」' : s.dlStatus === 'wait' ? '下載通道：連線中…' : '下載通道：無法使用'),
-      sysOk: !!(s.libsOk && s.dlStatus === 'ok'), sysColor: s.dlStatus === 'none' ? 'var(--red)' : 'var(--muted)', sysDot: (s.libsOk && (s.dlStatus === 'ok' || s.dlStatus === 'browser' || s.dlStatus === 'app')) ? 'ok-dot' : s.dlStatus === 'none' ? 'live-dot' : 'todo-dot',
+      sysLine: (s.libsOk ? '匯出元件：已就緒' : '匯出元件：載入中…') + '　·　' + (s.dlStatus === 'app' ? '下載：存到手機的「下載/企劃書」' : '下載：瀏覽器直接下載'),
+      sysColor: 'var(--muted)', sysDot: s.libsOk ? 'ok-dot' : 'todo-dot',
       exportWord: function () { self.doExport('docx', fileName, missing.length); },
       exportPdf: function () { self.doExport('pdf', fileName, missing.length); }
     };
@@ -624,5 +577,5 @@ class Component extends DCLogic {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-  window.__app = mountDC(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), { accent: '#1F5F8B' });
+  window.__app = mountDC(Component, document.getElementById('dc-tpl'), document.getElementById('dc-root'), {});
 });

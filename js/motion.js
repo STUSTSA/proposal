@@ -1,4 +1,4 @@
-/* 動畫：跟著外觀面板的「動畫」設定（<html data-motion="rich|calm|off">）。
+/* 動畫（與窄螢幕步驟列的自動捲動）：跟著外觀面板的「動畫」設定（<html data-motion="rich|calm|off">）。
    rich（豐富）：按鈕水波、卡片跟著游標微傾、步驟數字翻動、預覽換頁翻面、統計數字滾動、匯出完成灑彩帶。
    calm（簡約）：只留淡入淡出與數字翻動。off（關閉）：全部不動（CSS 也一併關掉過渡）。
    全部用 Web Animations，只動 transform／opacity。 */
@@ -15,13 +15,19 @@
     if (!rich() || e.button > 0) return;
     var el = e.target.closest && e.target.closest(RIPPLE);
     if (!el || el.disabled) return;
-    var r = el.getBoundingClientRect(), d = Math.hypot(r.width, r.height) * 2;
+    // 樣式直接寫在元素上，不靠 app.css（網站更新時瀏覽器可能先拿到新的 JS、舊的 CSS）。
+    // 水波畫在 body 上的獨立圖層（蓋在按鈕上、裁成按鈕的圓角），不塞進按鈕裡：按鈕由畫面引擎重畫，塞進去的元素會被改寫
+    var r = el.getBoundingClientRect(), d = Math.hypot(r.width, r.height) * 2, cs = getComputedStyle(el);
+    var host = document.createElement('span');
+    host.className = 'ripple-host';
+    host.style.cssText = 'position:fixed;z-index:95;overflow:hidden;pointer-events:none;left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px;border-radius:' + cs.borderRadius + ';color:' + cs.color;
     var s = document.createElement('span');
     s.className = 'ripple';
-    s.style.cssText = 'width:' + d + 'px;height:' + d + 'px;left:' + (e.clientX - r.left - d / 2) + 'px;top:' + (e.clientY - r.top - d / 2) + 'px';
-    el.appendChild(s);
-    s.animate({ transform: ['scale(0)', 'scale(1)'], opacity: [.32, 0] }, { duration: 650, easing: 'cubic-bezier(.1,.6,.3,1)' }).finished
-      .then(function () { s.remove(); }, function () { s.remove(); });
+    s.style.cssText = 'position:absolute;border-radius:50%;background:currentColor;pointer-events:none;transform:scale(0);width:' + d + 'px;height:' + d + 'px;left:' + (e.clientX - r.left - d / 2) + 'px;top:' + (e.clientY - r.top - d / 2) + 'px';
+    host.appendChild(s);
+    document.body.appendChild(host);
+    var gone = function () { host.remove(); };
+    s.animate({ transform: ['scale(0)', 'scale(1)'], opacity: [.3, 0] }, { duration: 650, easing: 'cubic-bezier(.1,.6,.3,1)' }).finished.then(gone, gone);
   }, { passive: true });
 
   /* ---- 卡片跟著游標微傾（豐富，只在有滑鼠的裝置） ---- */
@@ -55,7 +61,16 @@
       if (p < 1 && el.isConnected) requestAnimationFrame(tick);
     })(t0);
   }
+  var lastCur = null;
   function check() {
+    // 窄螢幕的橫捲步驟列：換步驟時把目前那一顆捲到看得到的地方（不論動畫設定）
+    var c = document.querySelector('.step.is-cur');
+    if (c && c !== lastCur) {
+      lastCur = c;
+      var list = c.closest('.steps'), li = c.parentElement;
+      if (list && list.scrollWidth > list.clientWidth + 4)
+        list.scrollTo({ left: Math.max(0, li.offsetLeft - (list.clientWidth - li.offsetWidth) / 2), behavior: on() ? 'smooth' : 'auto' });
+    }
     if (!on()) return;
     // 步驟大數字翻動
     var big = document.querySelector('.bigdate');
@@ -118,12 +133,13 @@
     var r = anchor ? anchor.getBoundingClientRect() : { left: innerWidth / 2, top: innerHeight / 2, width: 0 };
     var layer = document.createElement('div');
     layer.className = 'confetti';
+    layer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:90;overflow:hidden';
     document.body.appendChild(layer);
     var all = [];
     for (var i = 0; i < 70; i++) {
       var p = document.createElement('i');
       var w = 6 + Math.random() * 6;
-      p.style.cssText = 'left:' + (r.left + r.width * Math.random()) + 'px;top:' + r.top + 'px;width:' + w + 'px;height:' + (w * (Math.random() < .5 ? .45 : 1)) + 'px;background:' + cols[i % cols.length] + ';border-radius:' + (Math.random() < .3 ? '50%' : '2px');
+      p.style.cssText = 'position:absolute;display:block;left:' + (r.left + r.width * Math.random()) + 'px;top:' + r.top + 'px;width:' + w + 'px;height:' + (w * (Math.random() < .5 ? .45 : 1)) + 'px;background:' + cols[i % cols.length] + ';border-radius:' + (Math.random() < .3 ? '50%' : '2px');
       layer.appendChild(p);
       var dx = (Math.random() - .5) * 420, up = 120 + Math.random() * 220, rot = (Math.random() - .5) * 900;
       all.push(p.animate([

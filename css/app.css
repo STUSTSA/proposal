@@ -54,8 +54,6 @@ a{color:var(--acc2)}a:hover{opacity:.8}
 .hero-main{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px}
 .hero-l{min-width:0;display:flex;flex-direction:column;gap:10px}
 .eyebrow{display:flex;align-items:center;gap:12px;font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.22em;color:var(--muted);line-height:1.4;white-space:nowrap}
-.zh-sm{font-family:"Noto Sans TC",sans-serif;font-size:11px;letter-spacing:.3em}
-.arrow-line{display:none}
 .hero-title{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .hero h1{margin:0;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:.08em;line-height:1.15}
 .pill{display:inline-flex;align-items:center;border-radius:999px;background:var(--acc);color:var(--acc-ink);padding:5px 16px 3px;font-family:"Jost",sans-serif;font-size:14px;font-weight:500;letter-spacing:.1em;line-height:1.5}
@@ -63,8 +61,7 @@ a{color:var(--acc2)}a:hover{opacity:.8}
 .hero-r{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .bigdate{font-family:"Jost",sans-serif;font-weight:300;font-size:clamp(52px,6.4vw,84px);line-height:.85;letter-spacing:.01em}
 .bigdate small{font-size:.3em;font-weight:400;color:var(--muted);letter-spacing:.06em;margin-left:4px}
-.dow{display:flex;justify-content:flex-end;align-items:center;gap:8px;font-family:"Jost",sans-serif;font-size:10.5px;letter-spacing:.22em;color:var(--muted)}
-.circ{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:3px 8px 1px;border-radius:999px;background:var(--acc);color:var(--acc-ink);font-size:11.5px;font-weight:500;letter-spacing:0}
+.dow{display:flex;justify-content:flex-end;align-items:center;font-family:"Jost",sans-serif;font-size:10.5px;letter-spacing:.22em;color:var(--muted)}
 .hero-rule{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 20px}
 .hero-rule .sub{letter-spacing:.12em}
 
@@ -101,7 +98,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
 .step{width:100%;min-height:46px;display:flex;align-items:center;gap:12px;padding:8px 14px 6px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:14.5px;letter-spacing:.04em;text-align:left;cursor:pointer;transition:background-color .25s,color .25s,transform .3s var(--spring)}
 .step .n{font-family:"Jost",sans-serif;font-size:12.5px;letter-spacing:.08em;color:var(--muted);min-width:22px}
-.step .lbl{flex:1;min-width:0}
+.step .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (hover:hover){.step:hover{background:var(--blk2)}}
 .step:active{transform:scale(.97)}
 .step.is-cur{background:var(--pri);color:var(--pri-ink);font-weight:700}
@@ -168,7 +165,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .tbl{overflow-x:auto;border-radius:var(--r-md);background:var(--blk2);padding:4px}
 .tbl-in{min-width:760px}
 .tr{display:grid;gap:8px;padding:6px 8px;align-items:center;animation:rise .35s var(--ease) both}
-.tr input,.tr select{background:var(--blk)!important;min-height:42px}
+.tr input,.tr select{background:var(--blk);min-height:42px}
 .tr.th{font-family:"Jost","Noto Sans TC",sans-serif;font-size:11.5px;letter-spacing:.14em;color:var(--muted);padding:10px 8px 4px;animation:none}
 .tr .idx{font-family:"Jost",sans-serif;color:var(--muted);text-align:center}
 .tr .amt{font-family:"Jost",sans-serif;font-size:17px;font-weight:500;text-align:right;padding-right:4px}
@@ -178,7 +175,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
 .stat{border-radius:var(--r-lg);padding:16px 18px;background:var(--blk2)}
 .stat:first-child{background:var(--pri);color:var(--pri-ink)}
-.stat:first-child .k,.stat:first-child small{color:color-mix(in srgb,var(--pri-ink) 70%,transparent)!important}
+.stat:first-child .k,.stat:first-child .v small{color:color-mix(in srgb,var(--pri-ink) 70%,transparent)}
 .stat .k{font-size:11px;letter-spacing:.14em;color:var(--muted)}
 .stat .v{font-family:"Jost",sans-serif;font-weight:300;font-size:34px;line-height:1.1;letter-spacing:-.01em}
 .stat .v small{font-size:13px;font-family:"Noto Sans TC",sans-serif;color:var(--muted);margin-left:4px}
@@ -231,6 +228,11 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 /* ---------- 圖片與簽名 ---------- */
 .uploads{display:flex;flex-direction:column;gap:12px}
 .up-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 0;font-size:14px;font-weight:700;letter-spacing:.1em}
+.up-note{margin-left:auto;letter-spacing:0}
+@media (max-width:640px){.up-note{margin-left:0;flex-basis:100%}}
+.pick-cue{align-self:flex-start;margin-top:4px;padding:5px 14px 4px;border-radius:999px;background:var(--acc);color:var(--acc-ink);font-size:13px;font-weight:700;letter-spacing:.06em}
+.card.dashed{position:relative}
+.card.dashed:focus-within{outline:2px solid var(--pri);outline-offset:3px}
 .up-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 .up{border-radius:var(--r-lg);background:var(--blk2);padding:16px;display:flex;flex-direction:column;gap:10px;transition:transform .3s var(--spring)}
 .up.is-busy{opacity:.6}
@@ -241,11 +243,11 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .up-empty{height:110px;border-radius:var(--r-sm);background:var(--blk);color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;text-align:center;padding:8px}
 .up .btn{background:var(--blk)}
 .up-pick{position:relative;overflow:hidden}
-.sr{position:absolute!important;inset:0;width:100%!important;height:100%!important;min-height:0!important;opacity:0;cursor:pointer;padding:0!important;border:0!important}
+.app input.sr{position:absolute;inset:0;width:100%;height:100%;min-height:0;opacity:0;cursor:pointer;padding:0;border:0}
 .btn:focus-within{outline:2px solid var(--acc2);outline-offset:2px}
 
 /* ---------- 預覽（白紙不跟主題） ---------- */
-.preview-col .paper{border:0!important;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -10px rgba(10,42,77,.3)!important;border-radius:4px;color-scheme:light}
+.preview-col .paper{border:0;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 28px -10px rgba(10,42,77,.3);border-radius:4px;color-scheme:light}
 .preview-col .paper *{color-scheme:light}
 .tabs{display:flex;flex-wrap:wrap;gap:6px}
 .tab{font:inherit;cursor:pointer;min-height:34px;padding:5px 14px 3px;border-radius:999px;border:0;background:var(--blk2);color:var(--ink);font-size:13px;transition:transform .3s var(--spring),background-color .2s,color .2s}
@@ -266,10 +268,10 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
   .top-sep,.top-name{display:none}
   .round{width:44px;height:44px}
   .hero-main{margin-top:16px}
-  .eyebrow{gap:8px}.eyebrow .zh-sm{display:none}
+  .eyebrow{gap:8px}
   .hero-main{flex-wrap:nowrap;align-items:flex-end}
+  .hero-l{flex:1;min-width:0}
   .bigdate{font-size:44px}
-  .dow>span:first-child{display:none}
   .hero h1{font-size:26px;letter-spacing:.06em}
   .pill{font-size:13px;padding:4px 12px 2px}
   .panel{padding:18px 16px}
@@ -308,8 +310,8 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .sheet-open,.sheet-open body{overflow:hidden}
 
 /* ---------- 動畫設定 ---------- */
+.ripple-host{position:fixed;z-index:95;overflow:hidden;pointer-events:none}
 .ripple{position:absolute;border-radius:50%;background:currentColor;pointer-events:none;transform:scale(0)}
-.btn,.tag,.tab,.step,.card,.chip,.round,.x{position:relative;overflow:hidden}
 .card.tilting,.stat.tilting,.up.tilting{transition:transform .12s linear}
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:90;overflow:hidden}
 .confetti i{position:absolute;display:block}
