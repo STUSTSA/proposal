@@ -431,7 +431,7 @@
         for (var i = 0; i < anchors.length && !target; i++) if (anchors[i].getElementsByTagName('pic:pic').length) target = anchors[i];
         if (rid && target) {
           var sz = fit(imgs.cover, 14 * EMU_CM, 10 * EMU_CM);
-          var colW = (11906 - 851 * 2) * 635, centerY = 413884 + Math.round(3292947 / 2);
+          var colW = (11906 - 851 * 2) * 635, centerY = 413884 + Math.round(3292947 / 2) + 905000;   // 封面圖中心：標題與下方單位資料之間的正中間
           var setTxt = function (parent, tag, val) { var e = parent.getElementsByTagName(tag)[0]; if (e) e.textContent = String(val); };
           setTxt(kids(target, 'wp:positionH')[0], 'wp:posOffset', Math.round((colW - sz.cx) / 2));
           setTxt(kids(target, 'wp:positionV')[0], 'wp:posOffset', Math.round(centerY - sz.cy / 2));

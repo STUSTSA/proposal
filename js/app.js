@@ -69,6 +69,7 @@ class Component extends DCLogic {
     var self = this;
     // 安卓 App 的返回鍵：先關放大預覽，再回上一步；都沒有才交給 App（離開）
     window.__appBack = function () {
+      if (window.__closeSheet && window.__closeSheet()) return true;
       if (self.state.zoom) { self.setState({ zoom: false }); return true; }
       if (self.state.step > 0) { self.setState({ step: self.state.step - 1 }); return true; }
       return false;

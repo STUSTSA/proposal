@@ -79,12 +79,12 @@
         // 使用者封面圖：置中、等比縮放，最大 14 × 10 公分
         var kc = Math.min(529 / (imgs.cover.w || 1), 378 / (imgs.cover.h || 1));
         var cw = (imgs.cover.w || 1) * kc, ch = (imgs.cover.h || 1) * kc;
-        var ci = h('img', 'position:absolute;width:' + cw + 'px;height:' + ch + 'px;left:' + (389 - cw / 2) + 'px;top:' + (445 - ch / 2) + 'px;');
+        var ci = h('img', 'position:absolute;width:' + cw + 'px;height:' + ch + 'px;left:' + (389 - cw / 2) + 'px;top:' + (540 - ch / 2) + 'px;');
         ci.src = imgs.cover.src;
         pg.appendChild(ci);
       } else if (assets.graphic) {
-        // 範本封面預設圖：學生會圓章 6.5 × 6.5 公分（245.7px），中心約在 (389, 445)
-        var g = h('img', 'position:absolute;width:245.7px;height:245.7px;left:' + (389 - 122.85) + 'px;top:' + (445 - 122.85) + 'px;');
+        // 範本封面預設圖：學生會圓章 6.5 × 6.5 公分（245.7px），中心約在 (389, 540)
+        var g = h('img', 'position:absolute;width:245.7px;height:245.7px;left:' + (389 - 122.85) + 'px;top:' + (540 - 122.85) + 'px;');
         g.src = assets.graphic;
         pg.appendChild(g);
       }
