@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>活動企劃書產生器｜南臺科技大學學生會</title>
+<meta name="description" content="照著步驟填寫，一鍵匯出符合南臺科技大學課外活動組格式的活動企劃書 Word 與 PDF。">
+<!-- 分享預覽（貼連結到 LINE、IG、FB 時顯示）：og:image 必須是絕對網址 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="南臺科技大學學生會">
+<meta property="og:title" content="活動企劃書產生器">
+<meta property="og:description" content="照著步驟填寫，一鍵匯出符合學校格式的活動企劃書 Word 與 PDF。">
+<meta property="og:url" content="https://stustsa.github.io/proposal/">
+<meta property="og:image" content="https://stustsa.github.io/proposal/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="活動企劃書產生器｜南臺科技大學學生會">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="活動企劃書產生器">
+<meta name="twitter:description" content="照著步驟填寫，一鍵匯出符合學校格式的活動企劃書 Word 與 PDF。">
+<meta name="twitter:image" content="https://stustsa.github.io/proposal/og.png">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f5f0e1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="企劃書">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=LXGW+WenKai+TC:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/theme.js"></script>
+</head>
+<body>
+<template id="dc-tpl">
+
+<div class="app {{introCls}}">
+ <div class="wrap">
+
+  <header class="hero">
+    <div class="top-l">
+      <svg class="su-logo" viewBox="23 51 541 180" role="img" aria-label="南臺科技大學學生會 STUSTSA"><path class="cls-1" d="M75,141a51.19,51.19,0,0,1,15-36.23,51.19,51.19,0,0,1,35.62-15.11A51.37,51.37,0,0,0,25.08,104.79V141A51.37,51.37,0,0,0,76.45,192.4a6.27,6.27,0,0,0,.75,0,50.76,50.76,0,0,0,24.19-6.43,52.2,52.2,0,0,0,11.46-8.68,51.2,51.2,0,0,0,15-36.24ZM68.8,90.21a3.57,3.57,0,0,1,0-.56,6.18,6.18,0,1,1,12.36,0v.22a6.18,6.18,0,0,1-12.33.34Z"/><path class="cls-2" d="M126.32,89.65a6.78,6.78,0,0,0-.78,0A51.36,51.36,0,0,0,75,141H127.8a51.2,51.2,0,0,1-15,36.24,52.2,52.2,0,0,1-11.46,8.68,50.76,50.76,0,0,1-24.19,6.43,51.39,51.39,0,0,0,100.5-15.11V141A51.39,51.39,0,0,0,126.32,89.65ZM134,126.44a6.18,6.18,0,0,1-6.15,5.62c-.28,0-.53,0-.81-.05a6.15,6.15,0,0,1-4.87-3.71,5.67,5.67,0,0,1-.5-2.19v-.23a6.1,6.1,0,0,1,2.2-4.7,6.62,6.62,0,0,1,1.64-1,5.86,5.86,0,0,1,2.34-.47,6.16,6.16,0,0,1,6.18,6.17A3.44,3.44,0,0,1,134,126.44Z"/><path class="cls-2" d="M204.21,124.34,211,116.1c3.49,3,8.11,5.09,12.06,5.09,4.43,0,6.5-1.67,6.5-4.35,0-2.88-2.74-3.82-7-5.63l-6.37-2.68c-5.22-2.08-10.11-6.43-10.11-13.67,0-8.37,7.5-15.07,18.09-15.07a23.2,23.2,0,0,1,16.21,6.56l-6,7.51c-3.29-2.48-6.37-3.82-10.25-3.82-3.69,0-5.9,1.47-5.9,4.08,0,2.82,3.08,3.89,7.5,5.63l6.24,2.48c6.16,2.48,9.84,6.63,9.84,13.67,0,8.31-7,15.61-19,15.61A27.89,27.89,0,0,1,204.21,124.34Z"/><path class="cls-2" d="M266.65,90.64H253.19v-10h39v10H278.65v39.93h-12Z"/><path class="cls-2" d="M308,107.12V80.66h11.93V108.4c0,9.44,2.81,12.79,8.31,12.79s8.44-3.35,8.44-12.79V80.66h11.52v26.46c0,16.82-6.7,24.39-20,24.39S308,123.94,308,107.12Z"/><path class="cls-2" d="M363.8,124.34l6.84-8.24c3.48,3,8.1,5.09,12.06,5.09,4.42,0,6.5-1.67,6.5-4.35,0-2.88-2.75-3.82-7-5.63l-6.36-2.68c-5.23-2.08-10.12-6.43-10.12-13.67,0-8.37,7.5-15.07,18.09-15.07A23.2,23.2,0,0,1,400,86.35l-6,7.51c-3.28-2.48-6.36-3.82-10.25-3.82-3.68,0-5.9,1.47-5.9,4.08,0,2.82,3.09,3.89,7.51,5.63l6.23,2.48c6.16,2.48,9.85,6.63,9.85,13.67,0,8.31-7,15.61-19,15.61A27.89,27.89,0,0,1,363.8,124.34Z"/><path class="cls-2" d="M426.25,90.64H412.78v-10h39v10H438.24v39.93h-12Z"/><path class="cls-3" d="M462.9,124.34l6.83-8.24c3.48,3,8.11,5.09,12.06,5.09,4.42,0,6.5-1.67,6.5-4.35,0-2.88-2.75-3.82-7-5.63l-6.36-2.68c-5.23-2.08-10.12-6.43-10.12-13.67,0-8.37,7.51-15.07,18.09-15.07a23.22,23.22,0,0,1,16.22,6.56l-6,7.51c-3.28-2.48-6.36-3.82-10.25-3.82-3.68,0-5.89,1.47-5.89,4.08,0,2.82,3.08,3.89,7.5,5.63l6.23,2.48c6.17,2.48,9.85,6.63,9.85,13.67,0,8.31-7,15.61-19,15.61A27.87,27.87,0,0,1,462.9,124.34Z"/><path class="cls-3" d="M526.41,80.66h14.34l15.48,49.91h-12.6l-2.88-11.45H526l-2.88,11.45H510.94Zm1.88,29.21h10.18l-1.07-4.22c-1.34-5-2.61-10.92-3.95-16h-.27c-1.21,5.22-2.55,11-3.82,16Z"/><path class="cls-2" d="M226.13,151.35v3.42h15.46v24.76c0,2.64-.64,3.87-2.51,4.65s-4.51.77-8.16.77a19,19,0,0,0-1.78-4.6c2.24.13,5.06.13,5.79.09s1-.23,1-1V159.74H219.07a24.92,24.92,0,0,1,2.55,4.88l-3.47,1.14H225l-.32-.1a32.83,32.83,0,0,0,2.78-5.88l4.56,1.28c-1,1.69-1.87,3.33-2.73,4.7h3.92V170h-7.71v3h8.71v4.33h-8.71v6.48h-5.11v-6.48H212V173h8.39v-3H213v-4.24h4a29.25,29.25,0,0,0-2.23-4.79l4.15-1.23h-8.66V185H204.7V154.77h15.51v-3.42H203v-5.06h17.24v-3.47h5.92v3.47h17.15v5.06Z"/><path class="cls-2" d="M296.8,144.78v3.33H279.16v1.51h13.95v3.14h-33v-3.14h13.54v-1.51H256.45v-3.33h17.24V142.5h5.47v2.28Zm-17.64,35.7h17.37v3.65H256.77v-3.65h16.92V179h-12.5v-3.19h12.5v-1.32c-7.8.18-9.17.32-10.17.64-.18-.73-.73-2.42-1.09-3.38a10.5,10.5,0,0,0,2.37-.59,26.81,26.81,0,0,0,3.1-1.32h-6.2v-.73H257v-6.84h39.31v6.84h-5.11v-3.47H261.79V167H291v2.87h-3.24a42.32,42.32,0,0,1,5.06,3.51l-3,2.46h2.69V179H279.16Zm12.54-26.4V161H261.79v-6.89Zm-5.34,2.65h-19.6v1.59h19.6Zm-12.58,13.13c-1,.64-2,1.23-3.06,1.73l12.5-.18c-.87-.5-1.74-1-2.47-1.37l.23-.18Zm5.38,6h10.21c-.55-.5-1.28-1.09-2.05-1.68l-8.16.22Z"/><path class="cls-2" d="M323.7,171.59a48.94,48.94,0,0,0-2.73-5v18.51h-5.25V168.67a42.2,42.2,0,0,1-5,9,29.88,29.88,0,0,0-2.5-5.15c2.55-2.92,5.1-7.8,6.75-12.22h-6.16v-5.06h6.88v-5.15c-1.77.27-3.46.54-5.15.73a16.15,16.15,0,0,0-1.46-4.2,72.25,72.25,0,0,0,14.68-3.74l3.06,4.43A40.36,40.36,0,0,1,321,149v6.25h6v5.06h-6v.37c1.32,1.27,5.06,5.56,5.93,6.61Zm22.48,2V185h-5.33V174.51l-13.77,2.37-.87-5.15,14.64-2.51V142.5h5.33v25.81l4.51-.78.87,5.06Zm-11.44-6.34a41.61,41.61,0,0,0-7.25-7l3.46-3.1a39.89,39.89,0,0,1,7.48,6.61Zm1.18-12a34.09,34.09,0,0,0-6.79-6.84l3.56-3.1c2.46,1.87,5.65,4.56,7,6.56Z"/><path class="cls-2" d="M387.63,160.33c3,8.89,8.52,16,17.05,19.51a21.62,21.62,0,0,0-4,5.11c-8.26-3.88-13.55-10.53-17.1-19.33A31.4,31.4,0,0,1,366.52,185a16.16,16.16,0,0,0-4.06-4.61c10.44-4.65,14.77-12.22,16.55-20.06H363.32v-5.61h16.6c.46-4.28.41-8.43.46-12.17h5.92c0,3.74-.09,7.93-.54,12.17h17.91v5.61Z"/><path class="cls-4" d="M457.43,176.74H440V180c0,2.41-.54,3.6-2.41,4.33s-4.38.68-7.8.68a17.61,17.61,0,0,0-1.64-4.56c2.14.09,4.88.09,5.56.05s1-.14,1-.69v-3.1H416.21v-4.28h18.47v-1.32a33.69,33.69,0,0,0,5-2.65H425.06v-3.78h19.83l1.14-.28,3.06,2.78a63.39,63.39,0,0,1-8.71,5.25h17.05Zm-35.24-8.57H417v-9.34h3.42l-.82-13.55a61.85,61.85,0,0,0,9.21-2.55l2.24,3.15a45.51,45.51,0,0,1-6.25,1.73l.09,1.32h5.79v3.38H425.1l.1,1.55h5.6v2.32a29.16,29.16,0,0,0,3.19-1.73c-.86-.55-1.73-1-2.55-1.51L434,150.8c.91.46,1.87,1,2.87,1.55a17.54,17.54,0,0,0,1.78-1.91l3.56,1.05a20.41,20.41,0,0,1-2.42,2.73,21.8,21.8,0,0,1,2.78,2.1l-2.73,2.37a31.81,31.81,0,0,0-2.65-2.24,33.27,33.27,0,0,1-3.69,2.38h14.77l.18-1.6H443v-3.37h5.7l.09-1.55h-5.56v-3.38H449l.09-1.5H443V144h11.4c-.23,4.79-.59,10.58-1,14.82h3.38v9.34h-5.38v-5.42H422.19Zm3.28-9.34h7.38a26.55,26.55,0,0,0-2.05-2.1v.5h-5.42Zm14.13-8.39a23.47,23.47,0,0,0-2.37-1.92,23.07,23.07,0,0,1-3.69,2.28,21.77,21.77,0,0,0-2.83-2.42,20.62,20.62,0,0,0,3.47-1.77c-.87-.5-1.64-1-2.47-1.37l2.42-2.1c.87.41,1.83.91,2.78,1.46a14.49,14.49,0,0,0,1.64-1.82l3.56,1.05a16.59,16.59,0,0,1-2.28,2.5c.91.64,1.73,1.28,2.37,1.83Z"/><path class="cls-4" d="M510.91,178.48v5.33h-41v-5.33h17.6v-9.17H475.17v-5.24h12.35v-8h-9.44a37.22,37.22,0,0,1-4.24,6.62,42.89,42.89,0,0,0-4.87-3.24c3.55-3.83,6.52-10.12,8.07-16.32l5.6,1.23c-.64,2.19-1.36,4.33-2.14,6.43h7v-8.21h5.7v8.21h15.37V156H493.22v8h13.63v5.24H493.22v9.17Z"/><path class="cls-4" d="M543.61,143.87l-.68.82c4.2,3.69,11.67,6.75,18.92,8.25a17.57,17.57,0,0,0-3.42,4.11c-.91-.23-1.87-.55-2.82-.82V168H523.92V156.5c-1,.32-1.92.64-2.83.91a22.81,22.81,0,0,0-2.92-4.15c8.39-2,16.55-5.83,20.66-11.12ZM554,155.63a49.91,49.91,0,0,1-6.2-2.78V154h-16v-.91a53.07,53.07,0,0,1-5.52,2.5Zm-27.49,13.86h26.81v15.42h-5.56v-1.1H531.81V185h-5.34Zm5.15-4.78a17.51,17.51,0,0,0-1.55-4.74l3.51-1h-5.15v5.75Zm.19,8.34v1.82h15.91v-1.82Zm15.91,7.2v-1.82H531.81v1.82ZM537.37,159h-3.56a20.9,20.9,0,0,1,1.83,4.84l-2.92.91h4.65Zm6.56-8.43a44.93,44.93,0,0,1-3.83-3c-1.18,1-2.5,2-3.87,3ZM541.75,159v5.75H546l-2.74-.78a35.27,35.27,0,0,0,1.78-5Zm9,0H546l3.56.87c-.91,1.82-1.78,3.6-2.51,4.88h3.69Z"/></svg>
+      <span class="top-sep" aria-hidden="true"></span>
+      <div class="top-name"><span class="en">PROPOSAL BUILDER</span><b>活動企劃書產生器</b></div>
+    </div>
+    <div class="top-r">
+      <button type="button" class="round" data-theme-toggle aria-label="切換深淺色"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"></path></svg></button>
+    </div>
+    <div class="hero-main">
+      <div class="hero-l">
+        <div class="eyebrow">ACTIVITY&nbsp;&nbsp;PROPOSAL<span>AY {{f.year}}</span></div>
+        <div class="hero-title">
+          <h1>活動企劃書</h1>
+          <span class="pill">{{heroPill}}<span class="pill-zh">{{heroPillZh}}</span></span>
+        </div>
+      </div>
+      <div class="hero-r" aria-label="目前步驟">
+        <div class="bigdate">{{stepNum}}<small>/08</small></div>
+        <div class="dow"><span>COMPLETED</span><span class="circ">{{doneCount}}/8</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero-rule">
+    <span class="sub">南臺科技大學 學務處課外活動組 企劃書格式</span>
+    <div class="actions">
+      <button type="button" class="btn icon" onClick="{{loadSample}}">載入範例資料</button>
+      <button type="button" class="btn icon" onClick="{{goStart}}">回到開始</button>
+    </div>
+  </div>
+
+  <main class="layout">
+
+    <nav class="panel steps-panel" aria-label="填寫步驟">
+      <div class="panel-head"><h2>填寫步驟<span class="en">STEPS</span><span class="count">{{doneCount}}</span></h2></div>
+      <ol class="steps">
+        <sc-for list="{{steps}}" as="st" hint-placeholder-count="8">
+          <li>
+            <button type="button" class="step {{st.cls}}" onClick="{{st.go}}" aria-current="{{st.aria}}">
+              <span class="n">{{st.nn}}</span>
+              <span class="lbl">{{st.label}}</span>
+              <sc-if value="{{st.done}}" hint-placeholder-val="{{false}}"><span class="ok-dot" aria-label="已完成"></span></sc-if>
+              <sc-if value="{{st.notDone}}" hint-placeholder-val="{{true}}"><span class="todo-dot" aria-hidden="true"></span></sc-if>
+            </button>
+          </li>
+        </sc-for>
+      </ol>
+    </nav>
+
+    <section class="panel" aria-label="填寫內容">
+
+      <!-- 開始 -->
+      <sc-if value="{{isS0}}" hint-placeholder-val="{{true}}">
+        <div class="step-body" id="body-0">
+          <div class="panel-head"><h2>開始<span class="en">START</span></h2></div>
+          <p class="sub" style="margin: 0; font-size: 14px">照著步驟填，最後一鍵匯出符合學校格式的 Word 與 PDF。之前匯出的 Word 檔也能丟回來繼續改。</p>
+          <div class="start">
+            <button type="button" class="card" onClick="{{startNew}}">
+              <span class="k">01 — NEW</span>
+              <span class="t">建立新企劃書</span>
+              <span class="sub">從空白開始，一步一步填寫活動資訊。</span>
+            </button>
+            <label class="card dashed">
+              <span class="k">02 — IMPORT</span>
+              <span class="t">匯入 Word 原檔</span>
+              <span class="sub">選擇用本工具匯出的 .docx，內容會自動帶回各步驟。</span>
+              <input type="file" accept=".docx" onChange="{{onImport}}">
+            </label>
+          </div>
+          <p class="note"><b>固定條文自動帶入：</b>一般規定或注意事項、緊急應變措施與性平宣導六點，會依學校範本原文放進企劃書，不用重打。</p>
+        </div>
+      </sc-if>
+
+      <!-- 1 基本資料 -->
+      <sc-if value="{{isS1}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-1">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div class="fields">
+            <label class="field">學年度<input type="text" inputmode="numeric" value="{{f.year}}" onChange="{{on.year}}" placeholder="115"></label>
+            <label class="field">學期<select value="{{f.term}}" onChange="{{on.term}}"><option value="第一學期">第一學期</option><option value="第二學期">第二學期</option><option value="暑假">暑假</option><option value="寒假">寒假</option></select></label>
+            <label class="field"><span>主辦單位<span class="req">*</span></span><input type="text" value="{{f.org}}" onChange="{{on.org}}" placeholder="例：資訊工程系學會"></label>
+            <label class="field">協辦單位<input type="text" value="{{f.coOrg}}" onChange="{{on.coOrg}}" placeholder="沒有可留空"></label>
+            <label class="field"><span>活動類型<span class="req">*</span></span><select value="{{f.type}}" onChange="{{on.type}}"><option value="">請選擇</option><option value="幹部訓練">幹部訓練</option><option value="校內展演">校內展演</option><option value="成果發表">成果發表</option><option value="校外競賽">校外競賽</option><option value="迎新活動">迎新活動</option><option value="服務學習">服務學習</option><option value="講座">講座</option><option value="其他">其他</option></select></label>
+            <label class="field"><span>活動名稱<span class="req">*</span></span><input type="text" value="{{f.name}}" onChange="{{on.name}}" placeholder="會顯示在『』裡"></label>
+            <label class="field"><span>活動負責人<span class="req">*</span></span><input type="text" value="{{f.leader}}" onChange="{{on.leader}}" placeholder="姓名"></label>
+            <label class="field"><span>負責人電話<span class="req">*</span></span><input type="tel" value="{{f.phone}}" onChange="{{on.phone}}" placeholder="09xx-xxx-xxx"></label>
+            <label class="field"><span>指導／帶隊老師<span class="req">*</span></span><input type="text" value="{{f.advisor}}" onChange="{{on.advisor}}" placeholder="例：王小明老師"></label>
+            <label class="field">指導單位<input type="text" value="{{f.guide}}" onChange="{{on.guide}}"></label>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 2 時間地點 -->
+      <sc-if value="{{isS2}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-2">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div class="fields">
+            <label class="field"><span>活動日期<span class="req">*</span></span><input type="date" value="{{f.date}}" onChange="{{on.date}}"></label>
+            <label class="field"><span>開始時間<span class="req">*</span></span><input type="time" value="{{f.start}}" onChange="{{on.start}}"></label>
+            <label class="field"><span>結束時間<span class="req">*</span></span><input type="time" value="{{f.end}}" onChange="{{on.end}}"></label>
+            <label class="field"><span>活動地點<span class="req">*</span></span><input type="text" value="{{f.place}}" onChange="{{on.place}}" placeholder="例：三連堂"></label>
+          </div>
+          <p class="note">企劃書會寫成：<b>{{pv.time.t}}</b></p>
+          <div class="fields">
+            <label class="field">活動對象<input type="text" value="{{f.target}}" onChange="{{on.target}}" placeholder="例：全校學生"></label>
+            <label class="field"><span>工作人員人數<span class="req">*</span></span><input type="number" min="0" value="{{f.staffCount}}" onChange="{{on.staffCount}}"></label>
+            <label class="field"><span>預計參與人數<span class="req">*</span></span><input type="number" min="0" value="{{f.participants}}" onChange="{{on.participants}}"></label>
+            <div class="field">合計<div class="readout">{{totalPeople}}&nbsp;<span class="sub">人</span></div></div>
+          </div>
+          <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+            <legend class="field" style="padding: 0; margin-bottom: 10px">有無收費</legend>
+            <div class="choice">
+              <button type="button" class="tag {{feeNoCls}}" onClick="{{feeNo}}" aria-pressed="{{feeNoOn}}">無收費</button>
+              <button type="button" class="tag {{feeYesCls}}" onClick="{{feeYes}}" aria-pressed="{{feeYesOn}}">有收費</button>
+            </div>
+            <sc-if value="{{feeYesOn}}" hint-placeholder-val="{{false}}">
+              <label class="field">收費說明（會附預計收支明細）<input type="text" value="{{f.feeNote}}" onChange="{{on.feeNote}}" placeholder="例：每人報名費 200 元，含午餐與保險"></label>
+            </sc-if>
+          </fieldset>
+        </div>
+      </sc-if>
+
+      <!-- 3 內容 -->
+      <sc-if value="{{isS3}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-3">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <label class="field"><span>活動主旨<span class="req">*</span></span><span class="help">簡略說明辦理此活動的主要目的。</span>
+            <textarea value="{{f.purpose}}" onChange="{{on.purpose}}" placeholder="例：辦理全校性幹部訓練，邀集各社團及系學會共同參與研習，以提升學生社團活動量能。"></textarea></label>
+          <label class="field"><span>實施方式與內容<span class="req">*</span></span><span class="help">活動進行方式、競賽規定、辦理內容等。</span>
+            <textarea value="{{f.method}}" onChange="{{on.method}}" style="min-height: 160px"></textarea></label>
+          <label class="field"><span>預期效益<span class="req">*</span></span><span class="help">預計達成的質化與量化目標，例如參與人次。</span>
+            <textarea value="{{f.benefit}}" onChange="{{on.benefit}}" placeholder="例：提升各社團及系學會幹部職能，預計參與人次達 200 人。"></textarea></label>
+          <label class="field">補充注意事項（選填）<span class="help">固定的三條一般規定會自動帶入，這裡只填這次活動特有的，例如用火、化學藥品的防護措施。</span>
+            <textarea value="{{f.extraNotes}}" onChange="{{on.extraNotes}}" style="min-height: 90px"></textarea></label>
+        </div>
+      </sc-if>
+
+      <!-- 4 人員配置 -->
+      <sc-if value="{{isS4}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-4">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span><span class="count">{{staffFilled}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div class="tbl"><div class="tbl-in">
+            <div class="tr th" style="grid-template-columns: 40px 110px 130px 130px minmax(0, 1fr) 130px"><span></span><span>職稱</span><span>姓名</span><span>學號</span><span>工作內容</span><span>備註</span></div>
+            <sc-for list="{{staffRows}}" as="r" hint-placeholder-count="9">
+              <div class="tr" style="grid-template-columns: 40px 110px 130px 130px minmax(0, 1fr) 130px">
+                <button type="button" class="x" onClick="{{r.remove}}" aria-label="刪除這一列"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+                <input type="text" aria-label="職稱" value="{{r.title}}" onChange="{{r.on.title}}">
+                <input type="text" aria-label="姓名" value="{{r.name}}" onChange="{{r.on.name}}">
+                <input type="text" aria-label="學號" value="{{r.sid}}" onChange="{{r.on.sid}}">
+                <input type="text" aria-label="工作內容" value="{{r.job}}" onChange="{{r.on.job}}">
+                <input type="text" aria-label="備註" value="{{r.note}}" onChange="{{r.on.note}}">
+              </div>
+            </sc-for>
+          </div></div>
+          <button type="button" class="btn ghost add-row" onClick="{{addStaff}}">＋ 新增一列</button>
+        </div>
+      </sc-if>
+
+      <!-- 5 活動流程 -->
+      <sc-if value="{{isS5}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-5">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span><span class="count">{{flowFilled}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div class="tbl"><div class="tbl-in">
+            <div class="tr th" style="grid-template-columns: 40px 90px 150px minmax(0, 1fr) 130px 120px"><span></span><span>日期</span><span>時間</span><span>活動內容</span><span>地點</span><span>備註</span></div>
+            <sc-for list="{{flowRows}}" as="r" hint-placeholder-count="4">
+              <div class="tr" style="grid-template-columns: 40px 90px 150px minmax(0, 1fr) 130px 120px">
+                <button type="button" class="x" onClick="{{r.remove}}" aria-label="刪除這一列"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+                <input type="text" aria-label="日期" value="{{r.date}}" onChange="{{r.on.date}}" placeholder="9/26">
+                <input type="text" aria-label="時間" value="{{r.time}}" onChange="{{r.on.time}}" placeholder="08:00~09:00">
+                <input type="text" aria-label="活動內容" value="{{r.content}}" onChange="{{r.on.content}}">
+                <input type="text" aria-label="地點" value="{{r.place}}" onChange="{{r.on.place}}">
+                <input type="text" aria-label="備註" value="{{r.note}}" onChange="{{r.on.note}}">
+              </div>
+            </sc-for>
+          </div></div>
+          <div class="actions">
+            <button type="button" class="btn ghost" onClick="{{addFlow}}">＋ 新增一列</button>
+            <button type="button" class="btn" onClick="{{addPrePost}}">帶入「場地佈置」與「場復」</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 6 經費 -->
+      <sc-if value="{{isS6}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-6">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div class="tbl"><div class="tbl-in" style="min-width: 880px">
+            <div class="tr th" style="grid-template-columns: 40px 36px 130px 100px 80px 76px 100px 120px minmax(0, 1fr)"><span></span><span>項次</span><span>項目</span><span>單價</span><span>數量</span><span>單位</span><span>金額</span><span>經費來源</span><span>說明</span></div>
+            <sc-for list="{{budgetRows}}" as="r" hint-placeholder-count="5">
+              <div class="tr" style="grid-template-columns: 40px 36px 130px 100px 80px 76px 100px 120px minmax(0, 1fr)">
+                <button type="button" class="x" onClick="{{r.remove}}" aria-label="刪除這一列"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+                <span class="idx">{{r.idx}}</span>
+                <input type="text" aria-label="項目" value="{{r.item}}" onChange="{{r.on.item}}">
+                <input type="number" min="0" aria-label="單價" value="{{r.price}}" onChange="{{r.on.price}}">
+                <input type="number" min="0" aria-label="數量" value="{{r.qty}}" onChange="{{r.on.qty}}">
+                <input type="text" aria-label="單位" value="{{r.unit}}" onChange="{{r.on.unit}}">
+                <span class="amt">{{r.amountStr}}</span>
+                <select aria-label="經費來源" value="{{r.source}}" onChange="{{r.on.source}}"><option value="學輔支應">學輔支應</option><option value="社團自籌">社團自籌</option></select>
+                <input type="text" aria-label="說明" value="{{r.note}}" onChange="{{r.on.note}}">
+              </div>
+            </sc-for>
+          </div></div>
+          <button type="button" class="btn ghost add-row" onClick="{{addBudget}}">＋ 新增經費項目</button>
+          <div class="stats">
+            <div class="stat"><div class="k">經費總計 TOTAL</div><div class="v">{{totalStr}}<small>元</small></div></div>
+            <div class="stat"><div class="k">學輔支應 {{subsidyIdx}}</div><div class="v">{{subsidyStr}}<small>元</small></div></div>
+            <div class="stat"><div class="k">社團自籌 {{selfIdx}}</div><div class="v">{{selfStr}}<small>元</small></div></div>
+          </div>
+          <sc-if value="{{needQuote}}" hint-placeholder-val="{{false}}">
+            <div class="warn" role="note"><span class="live-dot" aria-hidden="true"></span>有單項超過 1 萬元，記得附上估價單（第 7 步會提醒）。</div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- 7 自我檢核 -->
+      <sc-if value="{{isS7}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-7">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span><span class="count">{{checkedCount}}/8</span></h2></div>
+          <p class="sub" style="margin: 0">{{stepHint}}</p>
+          <div>
+            <sc-for list="{{checks}}" as="c" hint-placeholder-count="8">
+              <fieldset class="q" style="margin: 0; border-left: 0; border-right: 0; border-bottom: 0">
+                <legend style="float: left; padding: 0; max-width: 100%" class="qt"><span class="qn">{{c.nn}}</span>{{c.q}} <span class="sub">{{c.hint}}</span></legend>
+                <div class="choice">
+                  <sc-for list="{{c.opts}}" as="o" hint-placeholder-count="2">
+                    <button type="button" class="tag {{o.cls}}" onClick="{{o.pick}}" aria-pressed="{{o.on}}">{{o.label}}</button>
+                  </sc-for>
+                </div>
+              </fieldset>
+            </sc-for>
+          </div>
+          <label class="field">說明（第 8 項選「是」時填寫）<textarea value="{{f.checkNote}}" onChange="{{on.checkNote}}" style="min-height: 80px"></textarea></label>
+          <a href="https://reurl.cc/orY7eD" style="font-size: 14px">核銷流程說明（學校連結）</a>
+        </div>
+      </sc-if>
+
+      <!-- 8 匯出 -->
+      <sc-if value="{{isS8}}" hint-placeholder-val="{{false}}">
+        <div class="step-body" id="body-8">
+          <div class="panel-head"><h2>{{stepTitle}}<span class="en">{{stepEn}}</span></h2></div>
+          <section class="uploads" aria-label="圖片與簽名">
+            <div class="up-title">圖片與簽名<span class="en" style="margin-left: 8px">IMAGES</span><span class="sub" style="margin-left: auto; letter-spacing: 0">選填，放上去會出現在 Word 和 PDF 對應的位置</span></div>
+            <div class="up-grid">
+              <sc-for list="{{imgSlots}}" as="u" hint-placeholder-count="3">
+                <div class="up {{u.cls}}">
+                  <div class="up-head"><span class="up-t">{{u.label}}</span><span class="en">{{u.en}}</span></div>
+                  <sc-if value="{{u.has}}" hint-placeholder-val="{{false}}">
+                    <div class="up-img"><img src="{{u.src}}" alt="{{u.label}}"></div>
+                  </sc-if>
+                  <sc-if value="{{u.empty}}" hint-placeholder-val="{{true}}">
+                    <div class="up-empty"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 16l-5-5-9 9"></path></svg><span>{{u.where}}</span></div>
+                  </sc-if>
+                  <div class="actions">
+                    <label class="btn icon up-pick">{{u.pickLabel}}<input type="file" accept="image/*" class="sr" onChange="{{u.pick}}"></label>
+                    <sc-if value="{{u.has}}" hint-placeholder-val="{{false}}"><button type="button" class="btn icon ghost" onClick="{{u.clear}}">移除</button></sc-if>
+                  </div>
+                  <p class="sub" style="margin: 0; font-size: 12px">{{u.note}}</p>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+          <sc-if value="{{hasMissing}}" hint-placeholder-val="{{true}}">
+            <div class="missing">
+              <p style="margin: 0; font-size: 14px">還有 <b class="jost" style="font-size: 18px">{{missingCount}}</b> 項沒填，匯出後會以紅字「○○」留空：</p>
+              <ul class="chips">
+                <sc-for list="{{missing}}" as="m" hint-placeholder-count="3">
+                  <li><button type="button" class="chip" onClick="{{m.go}}"><span class="live-dot" aria-hidden="true"></span>{{m.text}}</button></li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-if>
+          <sc-if value="{{noMissing}}" hint-placeholder-val="{{false}}">
+            <div class="allset"><span class="ok-dot" aria-hidden="true"></span>所有必填資料都齊了，可以匯出</div>
+          </sc-if>
+          <label class="field">檔名<input type="text" value="{{fileName}}" onChange="{{on.fileName}}"></label>
+          <div class="export-btns">
+            <button type="button" class="btn primary big" onClick="{{exportWord}}" disabled="{{busyAny}}">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+              {{wordLabel}}
+            </button>
+            <button type="button" class="btn big" onClick="{{exportPdf}}" disabled="{{busyAny}}">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+              {{pdfLabel}}
+            </button>
+          </div>
+          <p role="status" class="sys" style="color: {{sysColor}}"><span class="{{sysDot}}" aria-hidden="true"></span>{{sysLine}}</p>
+          <sc-if value="{{hasJob}}" hint-placeholder-val="{{false}}">
+            <section class="job" aria-label="匯出過程" aria-live="polite">
+              <div class="job-head">
+                <b>{{job.title}}<span class="en" style="margin-left: 8px">{{job.en}}</span></b>
+                <span style="display: flex; align-items: baseline; gap: 10px"><span class="sub" style="color: {{job.statusColor}}">{{job.statusText}}</span><span class="job-pct">{{job.pct}}%</span></span>
+              </div>
+              <div class="linebar {{job.barCls}}" role="progressbar" aria-label="匯出進度" aria-valuenow="{{job.pct}}" aria-valuemin="0" aria-valuemax="100"><div class="fill" style="width: {{job.pct}}%"></div></div>
+              <ol class="log">
+                <sc-for list="{{job.stages}}" as="sg" hint-placeholder-count="5">
+                  <li class="{{sg.cls}}" aria-current="{{sg.aria}}">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span class="l">{{sg.label}}</span>
+                    <span class="d">{{sg.detail}}</span>
+                  </li>
+                </sc-for>
+              </ol>
+              <sc-if value="{{job.hasThumbs}}" hint-placeholder-val="{{false}}">
+                <div class="thumbs">
+                  <sc-for list="{{job.thumbs}}" as="t" hint-placeholder-count="4">
+                    <figure><img src="{{t.src}}" alt="{{t.label}}"><figcaption>{{t.label}}</figcaption></figure>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{hasDl}}" hint-placeholder-val="{{false}}">
+                <div class="actions" style="padding-top: 12px; border-top: 1px solid var(--hair); align-items: center">
+                  <button type="button" class="btn neon" onClick="{{redownload}}" disabled="{{busyAny}}">再下載一次：{{dl.name}}</button>
+                  <span class="sub jost">{{dl.size}}</span>
+                </div>
+              </sc-if>
+            </section>
+          </sc-if>
+          <p class="sub" style="margin: 0">Word 直接套用學校原始範本（校徽、頁首、字型、表格版面不變），之後可以再匯入本工具繼續修改。指導老師簽章與負責人簽章欄位會留白，列印後親簽。</p>
+        </div>
+      </sc-if>
+
+      <!-- 上一步 / 下一步 -->
+      <sc-if value="{{inStep}}" hint-placeholder-val="{{false}}">
+        <div class="foot" style="margin-top: 22px">
+          <button type="button" class="btn" onClick="{{prev}}">← 上一步</button>
+          <sc-if value="{{notLast}}" hint-placeholder-val="{{true}}">
+            <button type="button" class="btn primary" onClick="{{next}}">下一步：{{nextLabel}} →</button>
+          </sc-if>
+        </div>
+      </sc-if>
+    </section>
+
+    <!-- 預覽：與匯出的 Word 版面相同 -->
+    <aside class="panel preview-col" aria-label="企劃書預覽">
+      <div style="position: {{pz.pos}}; inset: {{pz.inset}}; z-index: {{pz.z}}; background: {{pz.bg}}; overflow: {{pz.ov}}; padding: {{pz.pad}}; display: flex; flex-direction: column; align-items: center; gap: 12px">
+        <div style="width: 100%; max-width: {{pz.barW}}; display: flex; flex-direction: column; gap: 10px">
+          <div class="panel-head" style="margin: 0"><h2 style="color: {{pz.head}}">預覽<span class="en">PREVIEW</span></h2>
+            <button type="button" class="btn icon" onClick="{{toggleZoom}}">{{pz.btn}}</button></div>
+          <div class="tabs" role="tablist" aria-label="預覽頁面">
+            <sc-for list="{{pages}}" as="pg" hint-placeholder-count="4">
+              <button type="button" role="tab" class="tab {{pg.cls}}" aria-selected="{{pg.sel}}" onClick="{{pg.go}}">{{pg.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <article class="paper" style="width: 100%; max-width: 49.6em; min-height: 70.2em; box-sizing: border-box; padding: 3em 3.4em 1.6em; background: #FFFFFF; border: 1px solid #E2E2E8; box-shadow: 0 2px 4px rgba(17,17,20,0.06), 0 10px 24px -8px rgba(17,17,20,0.22); font-family: DFKai-SB, '標楷體', BiauKai, 'LXGW WenKai TC', serif; font-size: {{pz.font}}px; line-height: 1.5; color: #221F1F; display: flex; flex-direction: column">
+
+          <!-- 封面 -->
+          <sc-if value="{{isP1}}" hint-placeholder-val="{{true}}">
+            <div style="flex: 1; display: flex; flex-direction: column">
+              <div style="display: grid; grid-template-columns: 47% 53%; border: 1px solid #000000">
+                <div style="display: flex; align-items: center; justify-content: center; padding: 0.4em; border-right: 1px solid #000000">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHAAAAFYCAMAAAAMb/sUAAADAFBMVEUAAAAiIne7IiL///8ZKXO1ISn///8hK22zISb///8gKHGSlrayICT///8dLXG1ICT///8eLnFDUYm0ICb///8eLHGzIiX///8cLHC1ICTj5e3///8eLXCyIif///8eK3C0Iib///8fLHK1Iif///8dK3EwPXy0ISXTfIDmtrjs7vP///8eLHG0ISa6MTfhqqv///8eK3CPlbe0ISbkr7H///8eLHEtOXq0ISb///8eLHEsOXk6RoJIU4tWYZRkbZ1nJUpyeqaAiK6EQFuPlbecosGlhJuqsMm0ISa4vdK5LjO9PEHBSk7HWFzHytvLZmrQc3fVgYXV1+PZkJPenZ/i5O3jq63nubvsx8jw8fbx1db14+T68PH///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACRQ+gAAAAAOnRSTlMADw8PHx8fLy8vPz8/P09PT19fX19vb29/f39/j4+Pn5+fr6+vv7+/v7+/v8/Pz8/P39/f39/v7+/vMzGl7wAAYkJJREFUeNrsvd1z28aWL9oQIcKARIhQCBM2vGlLMU+sRJl4J3enap+aqlN1H27V+V/vw7ydqvNwnqZmVzmTxLmRY2foUBa3aJMGI8igBBhS07z4RuOTAAF+yO5VM9mWRAKNxlq//q2PXg0AFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBggULFiwrE4rAc4BlHqngKcCSX+4f7Gx8uMbzgCWvkHgKsOQXFbAsgENZwVOBBTMcLIuW67vGfzbY23cml3gysGDAwbJYmTQ2rf/d4BoK9qywYMDBsmDhnP/dFN7peDawZJUNPAVY5pCh/89HOGP10a4q5Yd4McPBMt9KxXr/muLQ8Ucq34p3GAaUymBxlgrLXCKL3j9pPBsfpxjUleQBUJ5NEz7A7NLG3wEcSioGHCwLFQV6qsMBUrhr/6ToGlS0KZ6ej0Jq9v+wDSkOjWpc01EBUhQHxxlfOgYcLHNSHN7Tob96HMf2s7RfIZ6fj0Bcr7keBhyCZmt84DcCc4QBB8siRQOJPhXN4KjOxyB3nf/lO4Ff7wtx4ERkozg4S4VlPkkjMQyeno9AknJU8W83YyQPMxws8whRq6X8lcITdCPEpCpKYrz3QYKjxca/82xxYww4WPKDDVtnUz9RxZN0I17kvkVVe8NYb0jwOMsgC33NuMhgwMFSLthguTFStyFg/87vMeyE2vec536J98SAgyWzrtTYGgabj0gazv/Sj5/LkT+2/ffOBrJUxRICGHCwZFGTKss0sK58XML4me2DCOLwyNLSrqFVNurzAww4WBYph5jXfIwiIv8OIw65h/4kNF4gvEZ+8mh+hcBpcSzlyxhPwY0iOCbicEEwCjIR8vAe8hM8GmDAwbI4yR00VPGcrb/sB388QLNPpBj+dCvw8V70chlDOxhwsMwUWcsJULjQeP2FC7tFWoK35chOwMeK/n2S7bY4hoNltrzKGiY0N29OZLyTav2FaIdXCbQYR4kiDlpJLLSiF8zYxAIDDpYMFGcgzP6QdiaP8T7xmyLhnGOw2EZ+UqMAYBiUBZHeOkLtR68nZbwvBpybwoC53gqJw/HOjK0ycDjAnUZvktwL/dwJahe0k1YcQm2r3ifaMdfLmifAgHNDhBWEfn9lkDP97Zs0TUmqjv9EheRqFYPxKWscyqLogCMMNDn2Y+gi4mUC7sUlxbM+KwacNZf7TjO1KgCiuDrI0X9JQZwuhhvUpFqu/6kcre0gvSQ4fH2WN6fYj9ncArNeBGep1hxvRPRNit+3V9X5Qf8paQ2DPw4w3iCy58W72PVt0+Hs9YfdH07ToALZkekHaaYvosveMDMcYwVZa09bDJk5z6+K5cCje6243yd3vF07IeglFwixa1uQRGXzhBHAOUdU4XVEE2QMOB+DcC3vPY/dulDDseoF1YRkGJLWoLroHNGp1OKjOPTCuiuzXNNitioG6Rrng16uTXYkrFQ2FJpx/tlLF0LRRsivpTDgaJnDVRhw1lioA78XCWLQYvMYsRu2yXsLT3+xkKN3+ny4QONownF2CkvqLSlPxfBu9+4w9KbSG9GwkiYGHFu6INP61PD+FVAtXQslLd9kvjEGnDX2AL4xrNhdhNC0I9muH7u/v+8jANmqL9q9UU969UCPCk30SA/PPVnK2vw5jUBv5ltSbXPULLl4f3Ts08D1rRTIthmK9eBhRk+czCEcDDhrLF+RCJGdSqg7w3Md2QpKsAHGEX+gR6kylWV0+zhNL1eXqKBXl/mW7CP7ozV54UNEvIubvqfMJzjBIjAmRHByMGsMOGsr9w2rRsojzoOWdtA7ZXhRCa6hcDmVH8yq2lVYblGCcacK79aqsYsHHNU7sUu74bWQpJdvUwKMiPgi9MEcu3sx4KyrcCZ3eeX/fBn6e4un/ZODHLz5ZSkaHtG3ZQnqTUUdzTTs9njgfN2WqQoAk8xzOxRzRzbWU3x0D54T0woTnBx+KgacNRXWLCqH5yn0PLLZQHq5nAS1mLDNYcHuHLEX3dCVia8QLd/v3J7P8ix2qZ1lO9HW/RAc3mwVZLz57uoJ05mb4GDAWVOhHllrJYogMP1daa/k5QyNbSX8YXux6v9FFOfisrFEjamBK2RnF/EVm4LSmcTu3ECLonScYTF3uahcNv4zu/S2+QCSNlhCLZZPZAMOVfQ95CoMw4CznnhjbyQIcAaZTzOJN8vaXkA8SvoLvcjbCjE7lFGP00XDhr0sN3+YxuHNnOLhGs/9MM1sU/xxybAgOJSDB3c7RVYXP1VnofM4XnV8x6mLwI0Y0cJ8hzpgwFlH4drWewlsUKG45M9LI3lpY2slqswCV13iYRzaSnIiCyLrcnl4g4SKyNbJbCLiTVW33EnwXUry4McC4bqvz5QxNBvjN6y54cnTOCLrOU6eI0nUxZjJzNfFAAPOOvKbg0iEgmjuJ5Ob0RI3O5BiIuodL5rwhQHuZcgg0SAPVSLegKlf6NY8yf41YVxqWKuO/iAWADMpFIWh04ks5xwbHo/6OSNVGHDWUBin5ubKNR6GS2qAtfQ+NIkD6SyOZHGxDQfhL0FPgDlEldmZlTDezIkAZ56FkmSO/QBtpleioxt4FKEQ4ISWrHQi67LFaee4FX39nXxPiAFnDcW1r10ribtNr4Ur5QYmEqIcLxbHsrJtGg2ikpvfK6liKBeoIxuQxGbnvDTI2Q2yvvkXmtDOBBhTdsygHGjL1TLYlQ9mubUYcG6u0DPCsEcr6PAUP6Te6cJuGM3Cxt6RCVpCErO4mm8QyETPBFYi0JfzoDQOSgSnvlLgUkGK04l5JDHhncvhU/DynuiBAWcNRcuY71lBnwoidhxHi6vhjw/CRDaKhooRNXfRDtcSFLb92RhfC1mYKMKhXMLSUGIScIACTi+Go1CJGVE5sMUG9PO+eQw4aygX9NoOLa5Sd5EFh7F4E1Ny1AxO2e/uP4YhejQnMvpfmx0ijWYTLcwpzHNK3E8CEdTQ4jhKSs/8Hgo4sJf31hhwsORy/39kTS7vF6ECeLzACmPqSzoL3ABwB8Svu7JYMimcTVWasXYmikXbd1DBHydFrjXyUeM0brUIhosCG0h0hZ3tuWLAuVEy5tcYcUx4IR779OZ4gY5dTDo8vqCapBMCC0rIPS3q+83ej8klmRTPF2v/VS3ROZR9V1OZPZ3BW52zUc81u+CexmsoWR3+VXU/IL7yi1A7C8QbJgZvnsqzjRGttX9TCsHx2MXZzI82Up6n0Gxsl0nVhqnAFRroOOnOf+S/MQacNRQ1mzat6gQHNK7SagvcolqF84+jZOEiC4dHMWkIk/6SC/oy8wqGzzau/EKXeC2kAZdAzPLeFJjgy82jgNilWkcJNakeyOdxRZ7yikbXQpx4kjcHBuWxWnaKPm5zOJRHmVxS5N/ToVjCYBqZP5nSuqPYOVUhXLgq9kB+Kc7+vqKPJ5cBtiyhZThSKKrs5+PJQyBpioq3Ntx4Gdz134vdWp+fYVdLFCFqwSbswGGZVbUx4WL4WtIBdY/mQXdG6CAwjoFY3Ex92jLLXoSUBGOxnVWhCxfNeb3xt8qwpnYFK8VPJL7KA+1ioipqKvjay412qeoYcG6wwI5bXpXWdGI1IRwmYVMXKTZflMdy+PBxshbuOg1GW5HtzVrKWo5mVeYzU+rQH9fpXJNj4U2p76voVI9CIw1tB1VPQk23/Edko8uN+X5GYyXL7GLAWUuRn5v7xeHQ3ajLzPIcliYp7f7Iwx9L2tcV0+PJpE/u7gVvK3g8pwlV/Z8XL2DxrYRm0yydOEz+W39QbAxlZsVNgFDC08INirx/UhCAJkl69qnEslaI84SZ1dRSWckBdM20okSxnH4MkWo/7XcTeP1GodHOxIH612DV/2Vhdde7Ph14lNLGlfgq+fr9k4KTQpXrUkVxeCZnMhutkp+nvH+61ZJmlR5jwFlXCby4rThSvBKC00r7azmcK4I3g2MTW5EjsaL1zoHgDKUmmeacJdyDO94XyW8SHcfwuBEOAV+UHFMvnqE8C7/JFM5EsUw1W20Yz9svCwPOzZa4nXorSVI1UhUmYUjutsOMQYxQlyenlJltZ4ZnKvlPc8rvjxHHcRDfciqIN2bMiWvYVqqdjoqzUbLklx+eliRviGJrQp7rCju/6RhwbrpQ0V+t5gySZtofQ81tGZIh6WDlrTJWZp7PywSXXqVjPSj1KPVLl9mUmu/MaZ1owbLQ6MWEO4JpNatdhyy/pMmKflVKwVTp++uCuzC12F1RLLeb+770Nz9BDDg3XGL2TK7m0NpIAFZh/NMZez6lYZmdOE1lWREMBumcI8jde/Yha0SbTGX/WkbbnLeLzCnKr8j9WmS/KhcYoBuxmS4qkzgpfongBprryBVJLh+18b/46AgDzg2X7TyAQ1WA2tYg0EtaWxOXSLP8gvib97PtvBM1tp6aFxKE9P1XKLgqbi65xSZGbGzLTjnTAl3KmTkBJxSC4SfB8HgorSadlD/bpfuJwUuw3/eR/ewkw/LzUyqWkzHg3GyhM3pUDLVlWTt0eYIBCueLyGZp0pmtsE1PgyTJbLPNZVgVeS5th7m/1PpFSFwwTX73MqLRcragJjdn8CM820If/U3ohL5ws+UFcMsS7DYM+qKonekqJBlQ2y7ovz1YIeCQ5oI10TFmlBzCiZzqyFKV/ehrNc1QGcqlMZ2BhSe+V0R694TH8d0kYpWiXUvOZXRHVuBAGSNdq0ITQB4As8pMO1Pz+hhBoCggSNUK6XT61TadaX+x+IKFevEWi9FiSVosaXR0sue6UMAhubq77ijnEgadMgEnmBQnGvfoxEIKlgX9PiwPcNDGLn4o13CThP3M1xGYTqI+KEoGj8Ra8FvP5bw+RvtZyWjgnafR6zt+laQsXgXYv0qXuu382M0kJmre3WyLREVWWgHgOHXortLPrgkqTTYppkJRgEPO1ZAuzJCGrn64kYATjYkEdvBSguXYpERORLFfzk4n9fkBupPpPlJqwj1Iozfa6ajyCBkh+00ZxzxQGddu5L5fvSh1k7PgHG9g1iY6ELqQE37DhRF0tCDKLo9cC6ks36UixPCM8Pygt/COCrdYhtqLCxs44Hcuq+rl+5sGOHwKwYk/nSwKOc1yGg/LT5B3eB/h4AeJUHMBxrqZDIfDYHvxUjuvT1KiE0HE+bY3xyGlkb6h9mR6IGvhuU0xtIW0tqcyODKPn+fBcGaBCqsvHXCCWUJ3NYgtYChNtmvs3kzf12Q959JYuUmgw0Spg3uuZChIC0nDvK/0iVWWQrFN5CWQ+dQxURLwJiqSBhWA5snCK0FLKrGl+WUEDBJVfn9/kG2jISL3wg+nmJPvwo1TSGzP9mLqFagsH2r/BEu+oj/TZg8LoNmJyFmnC7qH9CwNcALeVOBd31kQ7dvg6nw964dN1DkfyO9uLsGxclRkLZQSCp0OoMq9AM08eF5qcTL5KFntvCRWTKwDea6iFEeJV6aZKmYe0i1d6YqWleqEu04oL43n8c6Kc9P8zAIBJxMfIYUcM5p5T6sU7j4xfbaXnotMcd8XAThRbwqlfQvwqwy0aef9jgk6ndGaYA47TtP8mNN1z8jaVqjaRRlGV+3p6SXq6Rw8LRHthcRDxq3GNRHKGxPhyZ58jW+ABTszSdgMFFfOB1k+HO46Ib1EH98Latmj/PJUWUB+ZKfsC5JZUlLau1guOO3K7RTkSNsYvwDA4dqpFy3dr9puPJrzm+32+WCwDr5V8/M/lFzWJoa0JTHzLQ/Qtejwh7JSE8kR4sFIibPYQj0iyLhvw0AsBtnemoNisGwrQySJCnadgMcjpM7PD9U6nWLotumAXOmez6eVMOkZy/ByWNbMeinl/DJ5G4r8g5kXTeA3aTNaOuAkeVML8qs2Gn8pcsRBvf6o//rPlQPOsXCY8pZas5ahN6PkZbqHKha5V0r/CCJR2eK3KSZRXi2z8xZD80MNOyv5L+vMbmVWEj60gvZ7U6QO0d8cTewnuisGUShWCkXtZfqYlOMmp2d8M5GjyuNZ7uZUkhg+bqPVjGR0yYCT5k0twK/aFMR60WuI4vnJcMXZ8q8vUvSeS39H0jA1KwIDFEeIox+AzZVXYbkkMp60Syopxng505XZqtQAFf72rIMsczo0YvoRdaFdC9ZmC59zIjUCrWQSR9MCKFIVwj7KZqe5EvLqyQnL0uHlWrsYqxm7FBsXoFimhj62NB7N+G65gDPDmyrZr9oUH5Uy6np91ZBjHiIuggTE4dK+ObuiTw5w58+fxixcnJ65I23yhj74OikcQvYtXsWSoahTSi7DclAaCRYcqzpMDhwLm7OUXaUtgGFdK0XPOL4/IybC8/P24GKbGUl8ekKejMa2DJbYoSreNOt6wpYAimMqV0pMysE6pYysAooCk0uQZetemYAz25sq068qC27WAHLslyDqg6whHE/Dfp39ioNWTTdjbtKcZEhumDvAk7vhpLV8gbamquCUDMSeUnIZLOfR/b4MshhcJWWW5v9qOFRl5fkYV/EUpGr5/uwYrJj/hHEDDZhGZhtNPSaKeDQaxPPBWXboTIKYVFgIYY69pOUBTjZvqiy/aqN5v16mzRuQ0327KsBx9kfv63LOV3SRYQKnwbMnow3IDeqRnp82tJ6kUx07pZ8t4Q5PFD9rpiU5AKTgh0itjLNyNduaUzBp7tPv+Luhh7Ye09vAgYTdiL0snRy4VMChKAYwCPhR2eLsig40aB5lNsPoWywznCd67WMuXUYlV2mAk9mbKsWv+qxdL9vq699Kv1+sBnBczcpet6VJChT5bC09LwKAQ0YpDpfQGpyqbFWo6sydw1laZ/sOntceGP4Wr/5umzxLnMNxezPbQKFVbFsh05u1/KrxaBOTGOoj9oeeqxJfCWcwuyAMismcjhJz955RxrqSnVpwYtyrnymMiD7CwZGyJoCTx5sq7lfdur+3CLvn+U7vehWA48YfyFY3UwjH0nWCz9jWOLSPOkpxmsb/KQHnaavCVLhsqtHLWS48dOpXYGwzcqJ5BzFzzW1WOT1DKY6SHsIB94IxGeLznJEPssrW4p9+4i/3GtpIc4+NCWmZE9OhAqd41RLtlcqHN3Aoj3PRFaodz25nGGi4/OLRk7UAnLzeVEG/6s43i7L8Nr8Sv8or6hIiaZ64ehfbVptZs6ChS0bWOdbQAd5JoZC1LTrX0pF7yZtajWu0N3G6H7RO4O83JZqzLot2mad5FHGQg9Dj5Tf/o3WqlpoU/Jvf/Adt+SdE0MKrEdJP5MMsPlUu1E47rCxJs82Rk41cVdBILXV5cFEG4MzhTRXwq261xcWZfv3b4+7SSQ7hW8QXP8+EGwAsvDGPT+jNdbs7gxgKJZpFu/fzNrDV/shPsTvH1XhHIOBLGWs4kn8LKn7ctwMedhv6Bjkrowxf6Nn12Pt7oGqKjOzZQFdRpeNXwTcT81S6kr0yspvfMxLYOO6X/qzC3UVsQyh+zfm8qbn9qtvfLtb697jny97vgFg5LSDKlJAO7VoWIpIgYy+p8CsOB2ws9mBRnEEtD+Dkit2gJg5nq/dARvsUsrFLDMUgQZSguR44RS9EvTFDOdFup5nXzeCxuJGa3dCZMNKed12SSdT0zpdZ536OyC3lQCKdpeEhS10CaqvOLkbZiwLO/N7UXH7VRntv0eZf//uL3nIz5Oirbcm6S+8TNg/AoQ3zDg0nq7OqHyKXCRJ71knKGxRHP0reIFUS2sQrUQAXInV98Qc2CPuIPxd+Rp63SM6spXBWP/cEvAmFn/hkDLPDVj5eson30582s839PJkij2OJGb78aLFN+VboTeX3q249ri8BAB7t/Je2TMCpoe/jG0ObCZqtJdqKFRwgTBXad9Yt7bd8th8k9g7c2VGcwbCVwWFVRrIecAnNa+hjOCfaoHveYzZ+Ut+EdIyYOs7mI29rWHQ5Jmfy7sE4VDr0SzaSoYR7BgYi2jEOD/JAtWQ1nw4GbIbO5dIceCN408MyMxGWSbNobbWAU9SbyutXffa35TAOnnl+vkTACUwi+Z2Unh+yVvVAWoRuH6UuCunv3L27YGXIpid9sZl2fzhUAl3ZEXYi5T/0iRAD1D1um0YEb0BNdwpk/CBoTjVWVDWms4VBMu5EDL4vqWQDDdJE64V7yIQpHT3XuwgOSzklGzN4zhztBEnECeGLnSdxsUrAKcObyuVXPXi0HLyhwMOH/3u4NLxh0vAnhntHy8zYAq+Yck1McHYhwpNeUg9BOAo3KwjkleY4Za6JqhDaK9mfncPI+P20T11KchuT1+hXyYfnmCSDC8CttXMEDvSDNI9m+sIdEZxF1GeaGxwM66mtWucohBGRuzZndpqdLFbb5weckrypzH7VEsI3Lt4Y8v/8+/EqQjixJnId+IQKmC9CGtnPg2eJay7trvlTWSbqbGBTnrl/OLqnL1gVBiRA1ijTP8zc2go9qTx+cyN3kPb97fxW8kaeQTJOKM6pwvETZV5ZIYzt06o8t20hYWNbvl6exuyndIeeA28CjW/I2qwr6CknfJWARvOCRnneVEa/auMrcYl4A8C/Mi8mywGcWnqkoa8HrY4LJ160N6nL6lbWu6MBTUPrTUNhXS2PxYIwD7oCiO8hnWdoyOCzifgEOzEjokT7KJzZm5r5CX0wMCsVti7VyCQpCQ3Y5R/qFNCTDgDL3TtLltmGkMhvcxOc4FubOQHDlDlXVwQ45XpTWfyqhVbfxOANAN9u/rocxElDbtsO/f0AINysfHZ33vT1leDTtCtZv8hGNNyhowsgzwNpNOMMPo/gJFSypTUxDaJH9khqtrDnNPDs7iQln3wxTRkASecnKIpyXGd3SzlOPNTZb3dmEEdeqKXNBTile1Mz/arlpKdQvAHga7AUxEkDBOdgbTBM6NQwOJ7tucQQKBJGOUIupeGabOzqGzQ7A3P6qRuknX3Q0ijeXGd3gfFAQZeydnCYZ/+io3vKfAFXdLf/OPO3DI55Yh7aHHKf88fJQnFqmpxFPBVIrhfgLMKbmuFXrQJvloU4YdM9otx2en5IIKFrdZYGK0SkfRUJqjDu7tlWX6KWmLvVAQzbvSgOUnoMSpdbFZAY7slwrJ4PVL2MW78uCkDGnIVHd+YPwejRAzv4UaW6BXMc3xzeFVKd6ek+YcAWFb/DZQUuVeneFElsgs1N93mupzDqVy0Jbza2QydnLAVxQgxHU4DEsVVwpaB1LdNuF5Dfh+BmkMUCIgTnp6/p2D/DDMrEpNQHWXIcsfvU+JKacs8MDWY0H3D0IzHTMjie5w0VWmA5ZLph7iKayCS0rSI+mPmQsciCszX7m5Y/2WF2oysLXDrglOpNkdXN7VvoL6zw2uUlxZ+gerq5JLypRzoxLQNxGtElWJZn6l787scMBGoAXx2ocYR71sYsiq2nG15PNYv+Q1klbc41kXiYwcrRhlNq55hzUvxXOtIehmIOir4hsbRv5978llS+SD52ve1ZEsGMStZ7q+op9d2KXaoSvamNKpXQym5ry3hLr373GkVuPFoV3iwDcSgy2xIcSNjk2C7MR7wQ9A6kf/dRyroAtphZEUynHVwgvg3mP6QpC970gw4KjL2XrgcakM2RVuaLERwE8WHu4q7kQsHW3WwHiFJFBh/ZUrrc3eLleVMb1Xp6tnbrq69+/KdtGUvKh8fijYE47xZcj5NxjxzVRj6YY7swGcaJcwCRsp2qb4mJbDla6hsjXvh6QAV7js83K/ez4E3GGO67Ysketl3k2wT67fzHu6e05SD39/sZepZG3l2uN3IeUk9mmQ24yvKmiCq3leFj333366m56rZWiTcA/Oukt9AbMxH/Oe4tBRsh5WhPEA7hSFMUZZAinUSCE1PqGxF0+/RJoGJwPgUNbQ/XYiDDOj0hm2uA/nCVm4EWK2/fQyZPyd1WgkxfjkRx9h7aSEf5XDMgtUrkS/kApyxvaoPO3BT6669/6o3/8mileAPA//hfo0XeOYwIMUQjUgXm7cAjOSuuIl0lLnVhjTVZ43GcQ5+gSpGeb3ES3ED04vvCHlWwR58SytENVKCrc6aM8kY9Z6+yVMWcZBXGbpjg0X2p+Xd+hDwqZRQuj6BbrRmYE647UnLNgB7C+tqyAKcsb2pj63aej3/77X/eXzHeAPA//99F7h1nZyhIaHOPJYdWjsLPIvDJHfWbMYQaxr3+asIbyKAgofgl7IsBfJsj7kEH8WYaOM0PqPmYQhEvIFjjHcEatsb47w+OIqfdcahD9SI/RoaCl0NpEG2LZWJOypEZ017Qcvv5RhCiOCwJlwI4JXlTOeHGlP9LUz+sFm8AePxkcYHjsEcFgzuxuVg6SD5W9FBP/4SO+pFeAyFYmhneuJ693bATvjFSqjpfl/9GOFQDFRasQoI7uQJTQdTZ0EpACgJQzlG6waN48zw/8IVyVNCg2vC034zUJ9HtvWFifKgf3I8vFwIc0BgsAXBK8qbmgBtzMql3cLV4Ax4qzxZ27/D8j1I8qRReZMjB0xiOs595tU/ox/EqNqmsnMP9oDtFsZWJu8z6tEabz/FB1c1u5nleEuDk46p8Yrw46fRRlm1pZ04FVbBhY28O7A3dw85KTQejPT7q+TaTdj5PnyFRUPgy5xDCPtV+S7arDtwJnZYOOCV5UwTNz8eSNrgLbaV4Y/gV5/1F3TzMcJCumYd5nbMo4HBsOsFBICQh2iIffR5iQZZBEW5nImt7kbOxyt3tOPXqjV8VBWG3W2dZa06uQmO79HAQgX0ipm0OskKaUS/tIlQBqZzmHywVApy+xynH0SJscr/2Mt74pyd996Av5UXuPFmY4oRZ1wulZMChvixnC1nz1tzf3d5UVoo3APzf/zYGyxE9u7cT0saY1gjEAzADcK48vUlEop8plqmaDhyUzb4Tdmz0oaM35rlR0UOZRo5SKvN5VH44ySs5V8HyxSl17qth627O3nNBh98eQ+Q2dSLEr7r+Cx6oMdvMeOpZwj3g6SlBkwyYjPLvJJtheuRhRyoVcLiDMt4dwTaKfJ3aPf+wSrwB4NFPCwrjUImIkMeJ0N7EniHfnAlaLr51UiiEHtUogUeWt2i3LtkOuSgv5psTFwXn6zg8c4rz4Y2kDz18oezpGgzrW+7MTpzjdegZe7lIMS/FCeN4oGpQ+SWmOIrdS963NlXnDJ7P5JbtfPs1ZgAOWwrekGLBmHOlvijEyYY34NFwMdU4XAlFRol5UaKVQqAce3EukY+KsLYJ2s3EmRiP+9lDHkjnoymYV8e1C+0S3aDILB1wHLyBx2DqOVWuqkzj9p6w6Segty7zzXGkNUfQG9LjEEfolu3w72Y4vCH7ebGzAYcqpQiGuVP4EotCnIx4A8D/WIhTVRjPlbGS3Ls8wykAl/PEWkhbK+xm4tRhhJkYFtnpFHmq/4iq0Ir8KYv6jTOdiqnMOAH9INdxC/xe6OUNQgQlFnHY8mIPJMNmPBKRFE5LA5wysuHEZzslPP9iECcz3pgnBCxArSOH0Ep5sEa9VNN5ZVYPLh/BIez4gYM3iNqXnk1kWDC5nBg0iinikVMF8MbKLV1m/NIMB/Cgn7mfDrMfKc+K7LDRf4nurORKARyG2qK5HJbPlwY4QgnJyIpwqxTlWwTi5MAb8Oh1+Zkqjs4QXomVLK0p9mKNjwp+0XIX8hEc+8QIG28W2IotJhg9n6AljeN8eGPnljKG7+7NyuaK1ZeZnEwymvaGv0W/qT+P8ONmb1poxumtSm07d5KIzlMNmKYvZAn5cEooSyMr28oK8cZwUKSrsk3qQdofU20jg2LFdnHZrTHB4+hHQt5isHuChzfB0yPKLl5ollR7k5/heK14ukHoT1PlLMVq/HaGE8Ri+zjHVinLvbCBknV5zjmiGKo6d7VdtSTAEYtjxZZQngJS2xcrxBvwUHpZskXFEBwE02AvGe8HGRayL2IXIzrE0xSNzvdcXMvDm9AxnRclT09SX9W8kvsqXiQ/fHZV8l7pwHE5KVzgu5lJ5EjwxpSEKuXTati8HshzQA3DLLGOOwVTiMIZFGL7dpljpeH71eENAH8flhs3JtrpflSwJl0ZIx1pMqSLhQRmHNbI36lcOkoduHgTOcukbAIYKJENgGS+ac5tgp6nMspGkSg2Oxlr11LbUBOxrWQTw83HYaigmRyVBBSzRZeyh0ArB3AahS2quVWuCm5DuDq8MZyqcnc40GRmg9NOZQj0/RyAk+QOa2FrVXPVulDfOHgTc3SSDspGnBN1rzjJzhuSIL4MT3OyopBViqpxucYo7KS4VbFhq5R2otNOOFUlZkwPUmytUVawQ5mWAzhF++xV7pUdUCTYsxXiDfi2t/B6YyVocP2G2Q9gbJ/knWs2kyz1TbEX8KV5Wfgi9nBIvfzpkOS9mCV4sWXHov9oMOqTCX6Dhu35SvDT3KqHMXiTdBaWPecvQhtg+H6m2blfZpOpXNmUFC0uyLZIsfwERqWsMM48eFM6xZktcDCIfR8zG68ltsUs1NuH+MqyseP446L0RUxA5zwCnTlzB2y+MaLUcFeNUH1lP7sdKpyQz63iYt7ajO6OSqila0aKU+bZU/2SKo0L1lpR9xZhgbR+XcZlSHYevFkCxUnxhtnsCypFJZ2K3C/kk9oLMGwX9+RzkJxROJJT5NT32YCDYkSrImlTEIiTqBkPwLJa1Mi9VizkCEwndiAPok/fmzXiQSi0no3iKBpdGt7kO60rGXCKdRMsobo43uz+LANv6sR8XyyV4sQEWWGKN5w9pJbShLhQNxOn0XDSxaeLeeOGYxnoOghzkrScPDuAJ8aNtXf+xJsFOb0sgOPuAoPdwRdxls1+ExeXocIflbKAx4tQj7RsFOf3xyWtB30VrAPg1G4vRvvAxtbl6vCmXIoTQzbSyGnmem0iuRhPKuL2xPv90sRZxO3ABLNlcEddLvWdQwNy/GZXnZzARhf7OLrv21Q9vTOrqboyRDaRqU9jU21kXL+0YEdBOMx07hiAx8EB8cdZWKzay1hkB0fjmhDry7HmiRi5V5mFFIoW3ByeTp3eT1aGNwbNWKxPNS7BcNIKdIsUS8fuM1W6qquN2wzYcjMfP5Ycz4EnvbodELEPWy+TVYZvNcsiJCYt/hHZSTs9UWI3zMVsrfKbXWkXYyUzc5BC54WJmXycaA1PfHzGmG4l7pNjdb7Y/SIAp5R0OLxUHfW4VSPJDYQ8na8Ob8C/9surNomhkGrGT6e8tbRDFvoF8jtxfUrgMZJvoRGSzp+WrVNTWe4ypLGmls4qQ/J65sp/orazoo1NW5/GvpIo4siyeQSYgYo5A22h404z7m/oTmYFjt1WyXocCM/7IhYAOBW+MN6M9Gufx1wZTHZjk6o6OLG5eb0yvDFjcuXFcJ6HO8lAJSPgJPY6SG/PWGDscedXSonkvX4KFiBL6cLVT6mFcwYgKXHbGKRzJcEI1V9ig2rtX6Kfn6vQLORUZd3fkAycNtz4hy2OhPJexgJS10XLb97/eRXZpvnBWNooyja6QnHjgngD7pQHOFM5XHX/OuXTwY8exDX4M6hlakeK7vwpKiqm32lKlf5qWp5n8D4yvJXO+b1Z3qve6fFoGbiijlM37se2kgBkq1PWYwWdKi5jCC2+yimGvMY929ownKJ4836U9Ci6vkHTBlxs3Hq/MrzRGzvvynM9H4RechqYhVRDFPs6c3WGqAJR59K9cm3+fHJM3ss7i4oBH5lIEhc/k4gJ6k7TTvNAqsls24tHHL5XVqgr6FRl7sMFOz2hGWuu3cAxwsoaA07B8ptkuLF4zqVmQs7W+5XhjQK48gCnEVxJpTTfm4+suqYH3jIWVxtzMnQV+H3uvLVdYBz0PJzBko/YG4QlGUP+snxcjzZODRUa5WraGakItl9qWZ4nDF4++4Yq/aRXZyPHxod95clcXHEpgFMQb97MSrN9uHy/XZ2b4pSAN+BRr7S2PCMk3zGIHKIWnNeAuy31vQZNbGZ7784dAnEKjAMK7tga+yhWgZQ1BZzMCc6pLJNiePEvUpChPI8JgpUX6lL6aAR4K8erNp70hGSYmn/OWfRMxRgScLUegHOrUMX0pZRBISbvNtk5KU4ZeGN4yH+WNVtOxhTK2pk6y6UJvm312eO8laLS/DV/kR0+3gqY1HPqfE0BJw9kwJNe6HiGQiURckzhS4nkMHCie94yeqiYx54TNDCjpNmKqNS1AJxi5X5vL7Jx/mu5NhfFKQdvQP3P8iZM/o9snwu5NDqY/vZNvjenFGjmE8rfe/HE5IofaU0BJ5+ZTAcjtMZZK9aq4LQSXY2p8uqVnhXuj2j4iEnzEz34dG62t7E2eHM6zhpj+DDXWZwl4Q1oL99OqCid0Tu55gC+KLDxINSU9CcHTqjHiXijg7WU3J4ePPnRJ4ZF/Z9e9PaV8p5t+myBfqy+jgynWLcteJqngHgOwCkLbwAoMU+VUa5iKq/knyLH2qfM1y9FVucxkiHzHfyUHVvHa0pw5vD09G6Pq2/TijoeTQtDwt/CM0aVWFo0Nc/mWZbMT2FLA5xi5cX58GaF/Mb0vJcOONNOXJnvaeZ2bUqnEOXwrQIpBkvBmy4E6ylzcQAoleUgTiPJcapcLXFPAJ4sfCbn7wxQlktVDG8ue2uON2NEV28v31Lk2Ihv1m3TyrNiLo7iAEj/6c9Z8EYagHUSX7PgqpNn+tFirz94YldyXZZ94e1SoLtMhlMQb4bTxb6JwniDBqn5zeulq2ovrhJN/nHWue/KWDS+Wzj5OhSBdiajMTYiGW/gS7BW4vOz4erHEkqOl73MwpM+V+fK3wMSUbP5E3blAE6x8uKbhTcl9eTJqUmBPIGrp/rTveTiYk1STIjY/b24+vWlcH1USq/hX6ZgTWUNcmdyEHEuy1cUaQFPGS0zn5Z3reXjzfsbhjeAWT7ggDEbp6fT7ii+8s7bt5yzH1uCFoeDMmwyznXWLUPlsX9JXYPRBBFnAm6E1CKUd/5rlRHDKYY3cHDD8KZwd/m53P8kc/qhF+PLH/186nxhMfHbz5PDCGtXguPVxPbXYjjy8wxvdc2ESwTxlQBOQbxZ9/xUBG+AuIJ3rsSHJQySc/okaEmw96S74Oho8hHF2vplxKGTURmo6zEe+UdvERiAGyFkmM9qBYCyuEtVbPvUDcQbALYvlv7S0b0rIT2FJ32/JAf2houPoSQj7u9rGMCRWvbErMt49B/cghkZ3AiJ7MkokoUozHA+Qbwpt3wi40QhpEWOzuKTpz3blyEblYWPhUwsou+ra2gvNj6/WJ/ioGnHLhPXbgbgRHt1FBl3UYbzKeINqK7gtftnLMaeA6SqoGO2plmGxXOJf+mvo8FYh7Q/X6sN7JJsbtL640bgDRUpOpWKYHfyerjNrQneVOYHxcXgDdBWkKaaDHX9g0Gt4Ktkq76+XkqFkLCdhDcOFJIf1spkxjvU8zUjEx/evZm8fgdugHBfRpyg4yKx7mIMZ0so8u0bym9Ww3AAXJsQ40668wLAoxdrtblh+qyyfpst4Cm4ARLXI1srRBYLxXBqnyberCRNtUaSFDL3khfnrfUa8BQCLPPAjfC3mDf5qphRFsGbQruK1h1vpu+S/ZOND5+yHr68im+E65Xg0PxAxeZ604WK73cMi3VXKwA4HznenKcsi8zFp6yJ05OT2NaiiGufuY83lvXkNjVuN6HYqlOs8mF+wPmE8QaLEtcU3EtAaEA4nuJJuqHCbDG7yZuClYLh93kBh/hsp8htbzjeUBefuFJyD2J+uV9zNhHzADRGGHFuoBfFsLUZnUqLnqU1J+AUPM33pvOb6ietlkQj4ag43u8I1m4rQxmTxJsENqx7Mnwq3hTd/jUf4HziePNpkxsuW26SZcFgpOD5uhFCCnymY0D6hffmzgU4GG8+WRFaOTRGELQ/MOSsvzBixma1JTQ7mQdwMN58ss5U3rNI6MMneDLXnd3sZe2N3Smh98gcgPOR4818h9B8GjLH2UeNAZ629cabrzOeqSiVchR6fsCp8B813kzOMxT1sW8+TX+Kxfb50Ql8Ws8SlVP65WxHyw04xdptfRx486nKPDsWZDxtay5TWT6uc+kZqn5p/VnzogfGGwvusZpmFEnHc3AjMKfLsvUEAiuNzssrqsoJHxhvPmXp7ef+Sh/P2g0RRTklamzkcEXpvNxyqnz4gfHmk5ZBI28Qp483cd4koqMooENVWPeYBg0qWtkF47kABOPNJy7PcqaplB6es5smOlAX2d09D4J85HijX2C8mbUEPmsl9gKCsnUeo0IygKQ5S1Okl3hDFZa5Aedjx5sckeDJp6ou05NBpEuKNFEnlxM/OGzNI1kF4AoXNGGZH3CKtS/+qPAGfMKRCf3khGIo0iwWG5vgkjAVEIMNlkKAg/EGiztXONWNZV7J2tMY403g41hxsGBZIMP5yPFGy9lQ6xorDhYsiwOcjxxvEo9nSBAJ6w0WLItzqTDeBOUC6w0WLAsDHIw3IcHls1iwLAxwMN6EBceMsWCZ01o/cbxJO+4OMxwsWJYNOB853szVThQDDhYsiwEc5g7Gm7BIeM8VFiwLAZxix2t+nHgD/sRqgwXLIgDn48abybv5hoc9KixYFgE4HznezNv+Bm+7woJlTtnAeJNXzt9jtcGCpXTAwXgTL/igJSxYynepNorhzfvBWuNNgXYUY6w1WLCUDjiFynfB5TB3d8lKLoS6tb0ivMEnLWHBsgDAWTbeACpP+ofeLjK8InjTx1U4WLDMKxsLueo8eAO0O42spGVjpxDejIvkmYZYabBgWSvAmQtvwPTtTmsz0yc3uWohvCmUZsIeFRYsawU48+GN8T1AthqzB7SxXS806mJ408fd/rBgWSfAmRdvwIe3AOzs1WYM6RZHFxndVC5WRvMa6wwWLHNL+UHjufHGpDiG3AZvL5Pjsptbm4VGN+f2KexRrUwoDoDhFI85m7AMmKx1B9zSAacA3hgU57YNOaP3sT2uNqpbBRnZRCmINy8+ghwVuTemdP2GICf1jaGi5OnNwpuVjZk7AGt+5FHZLtVlIWC/cOCgce/+DhUa2sYt9rNaUbwpym/A6CYCzPfB7J/A74v7B+zNGLxgLokt8kZN+MrGTFgHMX8e85e/Mh8nwymGN2Aque13yAYA8FKbfoCgslEB5CZZKT66a6UoP+kvr386ozKsYp+WSzSKsOT9EVlH6QxRX522QUYDFUhWgdacVGqaPpqpLjXrv9UVHOTJ6/Oe+LeyMVcsWKFjHoXmTz5GwLks6riq728hY9vZKXV0JVDNZYWMKZ7mzHcD5dH5lPgbqRRoo7zT1VgUcKbPWmCXBss3h79GLaHemfWlIatds3D5HUHYJg+sA4F47dT4LymKfR00WCBdzbbcVY0ZwJEgcWR0sx9z2d9de8CBK8AbAN62FvaoWnF2Ii2p91bbVHbNDATwPIDXJLgqcLFTcBHcNDI9AdLjFegaDZTNTaCqQNAuKNujm12/KTEiDV4s3y4OjVvzgIdy18plTNRepcYZb4R/DtZ1zIYcM4a+9KIDmujrUs2RDDjqKvAGXI8aC3rScQldJf65LH4DpPEIkpCoig2SJIFUZGIZCtRP10LVtCPjvxPjWcYGZyCmfBtkSDmeTCrq8qOg8D+MgY73wQvFdfbN2Mz+8/NMb2I1Y7bY695VTF6EIgFLTD82wLksJRGo1BcSbJtelIA350sKGVOgf2JxzKne7RJiC/Co50GAfPO8K3GRjNTVClSNA28c4nxlcoYpGOmHWd71isASmu8hyPMZLWtqLzJmC2dLNNvqFhxzMmSb1IvJFMGSaTfWP9QZCMCaA87k169XgDdg+noRTlXh8ht74VpSTryBHiY8Pa2zGvJH/t7mcPfdOBDVISoJj0fUxlNaJDlDJY1/ViuqZ039HAsKC43lh9HM92tcSGD67r1ZpjauOWBIXYF0JLz0fSvWuvlU0QJRHTL8EFRFm8YszCylV0KWz0wqu31Aq2lXI5oUqIxs4kFUdXK2RtQMUoMasOqleiiOuaKPoWNCELlW/Jg5kQXwtaRTxswRNKVTgK1uXxynDIHTJzphP5Bxuf2rAfrZe7aNQNVwTL8H2hsrasMYLymOxrAqrNYY0rwWM5kwyroCDnjz9QrwZjFO1bzdi0Oe8JvlvBNCgAEGMmL9GxMPORKIgBbgsOdOuHBnk4Qd2cWeRm1y7PyJ+YIGkrYNyL+N1H3zFx0XyTR7QiiqOZEjyzYxpSqs7CPa5zYuHCmAe7AJrmnBuQxxaOAfODf9o8aeoUnSMZzB3JzX4WrdNe0BI9NgSHgN3ig+aFDfWVYlg0kPvS5zaI5fAv2pGdqlXhh/M5wzAAwj/Mc0+WpANK1056n5LU40rns8M/XHhng+5QfZzBDUpOtACdB+V9PH3DA+RLaMAQyOp4/dh6a3f4XonDOk7P1MHtiQ8hME93c3DWC5e+QPRXDWZJJ1YmPWQtS23usF0PqoJZJ7PNCuDTs/vH7VNud90I0DZRKuHnBGK8Ebw6navlXyQxZPh1vyaknvpAFeB16/4mu6rc/WixMrDqzwNdosI3BgY08wl2I7UcE+MqOc1qd3BOs3bm0BSfMm679v1m0I/T56O4GqsQrQee0VAkTQ1JOmwrTJvjIWd9s1+97PTbNoN19wbesjPPdCSVM1d8ttxR2GylK6ZywKQwJy3/YmbVyyv8Y7MOEN0DKyFqicWKFdTvIfqzlIvhro88Y80X/vjEyLhyTZnpkik/igEVS83msd8z0IjaPJd9bk0I+7g9Qx2wuI9qphrBJv9l3QP3XmnTDThpLBepSOHpxzsjHgRdBVjHu5t6C+/M2GHoUNu4DmvBjPVkUh5Wva/iUgrw8QFTAo2kS/Q0ujrUvZos1nOqmocKWAM/n3f10F3oDp4EG5z1hS5WV/WcfD6ODuIPjqm47ZkN8Y/+nBAfnIWH2Fga14I2pQ2abdMM+oz1b2HeqvHLFgaCKQ8mzKbYHqzpuBp52GDhJfGTzf0ACx+Yuv5+w+HJ4ba+TLKfP90Lntr1VAVsg2P2mQPWkCTwbfCZZrMpWfiAonsKKJW0dXFUFkUkpXxsClmVdVD1I4a0TmYYvPZYqVGL4pAhcj4BFLX1V2LjjyAtWufsNT2qrlSRirNtlyoDn5amD6M8fKh6DZNB5d6jDgkD+eEVgxYCPgq+54TFP/RxOAfVIwyXh3SFMHNYcQJoz5RGYAJb6Sx8blBjpgRQB/0Ul3PkRRO1NNngjq3z23YR4+vapNKlutfUoEz8cAdsftfdvGrq4njMV9Ji3R5Xzmf+QOU72qUjofYGXw1waQWXM9+EVndkFl98zKYVlpUPMJeeNCNXBep81rSZ2VAg7orwRvDDU8vVfmI15o5VznGCwNcEgRrZpQFTeZI5Dar+aKDo9MciLYrH16CphdSfDo0Gi6733T0L2RAMnRFJiOE+rhDwzvjB0Y6EWJAil4t+MOpJfWp6ZA/en72jPr39C6T5MVtB5jrqTGIvnoia3PJ4AzDEbptI1PwpMaYJIBh/ZC1TXVAwyLQbAGBHRloEtAPVEORMn9s2IDiLAfnJ6fhDoLeiYmk8A56P3UdKiUFzDtaoZNypTpJz1nFdmwyheHwaBPrATKTd8wyKpowpEAf2wbpERVe7T74PFjNn/NiA/G1gBlYwzwhe4FpO+LPTvIbLyl5wcOJ1PNXXvnLSBKV1tmaswYyJ7JXKhvOrBmsKPfIDgZiALii0g+TKKIYyC64amRsm5pg+OHj7avN2k4EkxNggZvOz+/Ry+neW7aXoGr/7MSvDF06G2J4WKlJLzpLK3IWO8DkUFL0Y+euo5Q/2fo6NVJFwguyICtqt5DbASNXABF81qG+W+JAGPmMf+024VAP5ZA0/XZGBF2vE9Bid1DliYW9P9Qj3U7dOMvVDuG9ncnR9a3xg09uYeaAFww0t2Czm3boB8B/+wdeQB2Q19UkeCJNa7TZ8Y1oBNUYVyu848j24LTrmZ+uDM5ke3LMuTMxXgr9Aihax1VjqyHuuTP2dQxW24VXfOAduizbn534Ce1zqGIAEbdgM7R4NSYW2bfAb8KyZmX/s28rT6wW/oHgEKLkgg4HMGgCsg/H/3cJXtPwdBAIQinkvS7MWnyigEHDH5dCd4YM1ha/nlyrpdzofPe8iL5J33w+PEh52uOEwv9lkcGMegAnvA4EUJeIFADz/xGgVSUbVDC6VMbl6YvgUfuD9kXgSie4H/TdF8aY/M2NVSjGRrAC8r5vsyyyb1DVHdJJyZuFdqmbUSBorRBaIk2YSVmI5Bpu9w9DwQmwIuhp12t4dI1c56URvp+spiIBodE1ptmbabz4OdApGaNeeJjzAQ5+oNq0wh3ng7BHnoVjdmyXqYHm6omEJtA0h3ua7khNfQ2VRDtTidNRtESSwVwKgrH8Jm+asCZ/P5yJXhjTMZlOde5Oi8rDtZdZqnmibFYswfff8+TaDN7mlTQmZb9FRNW6LavpQQI5fnIiAqyoNWQVR/OnA+wZMDK5OCa3pXsUPFYGkgDhAa8mMhTH6MSZfT83IlICayDAr3nqusMaL6RbUZczJi5F4x5mdBg0LcRpeJXEqRdjQL9oR/Sm5zlXnYCBOj5hQ/tl5ezxjztuqyHEqCOBorQtyoBEkE18IfDfiSlr9hE5gw8PAW8A2ed3qQrQRgkUnEZ2Up0IaDAPdDzaPsuOFpKZWA6qdQ6D1eCNwbQN7fWKHwDwPFbsExRjihWJIGBIhI3chOsQtCc4UBoHbm6M/ET6ZxcCWTVGQXGOedHvpoOBE8HIaUGnAYdWZXvTBxKhMYWDW2H3rAoLaX3K3QZuwxJxeUflpzq4NJWIpahmpGWQ5XIdsSp/f8GrvYZ0bQ9oiF5I027msoi/ibTZ2fGcJBv83IQGjQaeJ5K1fAm1fQxG1+AtYGDMdcoI0HLeMxUPDrnn//mANiR+7teRTAQ6XFf1ykw0E/BYBCereg72NIrUgxnp0HfI0ctaTl7v2aUeo7+1/9cBd6Ugzgf3pWW5jvvguWKqsq1oVwlqSYpCD3bmgQQ5Lwjwa1Xpyjdi24SjYmX1bL9UyBTUToNAsCiusr6WgTUpDJimNEEeFkQR97F0U6N7KLr6FaGOABHdkLk3VjW9ysazVvZ98gKzcU4+yZEEjsA6hPYNJypOlo7nXK1K9Br+rrfmNkQHyUPsoFvlD/w6fWFXwhYAcLZrDGbNa12oVIdIBVdFThsyYZPKtfIEai2Qv7kOz1KlAbmRjjr3TTUynl4w30zbv3i1DvR4RhINW2NT5zxLqmKflZt+ejfDh+uAG/KQBxNLa8wuLuCvW9HVhRhZJh9q2WFWzRaD9F2zZn8yZhpuHY/Pb8MnvBVITkXXBjVM7ynKCRtejjUMpdYs5fLpKLWejxyR87ArZhFcKpQon8KBoTc7E4aMqiFPkR+a+vh9dDcVhruERATwak4PGcIoFU82CalTFdTQH3fZwTnraMZtoGaR3XCBBD/nOdqPrwqgZpkENt+Rgetrhn8YTUE6ca8aDqusG2gJ3tJ9e4iEFmHMhUNrKhPvgeDSXWbBiwL+KY+Qe9MxFl0hazS7tp05ScFDK90tD+wbvBgWec7ztzMMn4ySCnHGSkLc/ymg0JnDX9QSsSIzlIdKhatG5qe9N3C0osQS/cVU6mRfuMMnZwEgGHCyJyttuRjvw5u/5n/5vRN/4rdUaWi2mp5BE5RddfE2DKNzcqVR6CUHkXNfj4dNIKEkdwjtXcqCS0o6LXCzsiYBfdDzRU6HLnfNSbEgJkzsaYE1DjtahXjET0Hpi+3cxXYVoIFXZVN3aMNqgR3Zo3ZoF73zAev74NXU/Qtws45PdGJqm7goRyc89GDp2GDnUwB/A/bxbZ6fLH2XlhPXzSa48OgP6HHwOmJ9CX4GfVMBzX7dtdnSyo1nt1Cb3L8b4nJqrfvFhloGs+/lWCqyiXizfnxMvGGfxRMLcNTxU4m8KEkLefFCTgBCRnoSj2QtmAm3LXlcBBfA5F0AwcsUmHSIH2DHULdgCt96mKDr+kXuhAzWoJWEUKlUBn6pEUw6REPf+0OTm3qcQmUCEBFMuXgtckKuJ5qswkeRd+0q20ZF5sg100dLQSBL1N3yIDbUZNJX8fG1ObMMRsOkrkZgQo3xlblqaqDqQ4ic05dbYa6pRHfPvbe1eDJP+zxtQNxS0BG6BUzcb3mfZpGvD1Db46tTB2xtM3tWXp2jp/+7/hs1dsF0zC1Nyfs6vJlmfssny63kTEZXuLP7QR4DwSCKMQ9xElBOM3nxHYgVl69R1q17cQeDSQYZ/Osa4QTGIh1cvd4H/t0no8zT+PzO97vNX43C1MI8WqOhb/4L1qOdK7SAZCiLGkAKNK0xh40U9D+XtbUq9HGR73R6rO3CbPISCm6ogRnjdlE4kHXxKwxm54sE8P3Asl54R4CCGqLJMPOEb1H8u7rmz4D4Lnxsu8H7hFt9E/tCHZUySzdQv7KtQCUrDsw8hoBjrHsPfn3FeCNQfR+/Gmeb8nKpMxR/PR+qXgT0kCT+9u7Yc5AIIr7Fe0twBVQ9YONtBgErKsLoJlWNzXgZNvj8VoAyxvemo4iRqPV9hfYSwDiZ7VFeyZcq11ky3UwQcbzGg1UqEyUEZ1GJ8m0eNPgp6MmGGijrFdr+4AjXoH0yhMIIPLIqscPXSra9ACHaGmBrQyxYzZHfYcAtWCBjw4C73u/dUAitwwXA5k7Vb9vf+ljd8+k8uhjVIEUYSv6hVOwoMNAFKVHmmBtQFGrD9YKcGL9qsXjjXb0X89+yOu0XZ2fl+uOvlhuRhyMTa0Mh0ivrEABzwWNtuOtalseqbkHWkFPQd2Gm27A7o2ntzRCcjTEU6n79ya4EBWKM8+JcVUVCZFQ+R+YClhVm2VDq3oNLUbyTLFhMLw3zmPxyB6F1KuZo/WeYhPODGFeT9H3EsRJc7+A/+Bwe+aYTXunHx7ywUa1uoKmtBgAgmnt8JxbvIl2yW3LWIU2g3va+ajLClRecXSC9EiuJV0KnDMUIGrymgFOjF+1eLzpPjWg+r/+v1y1NPrZu5ITSv1Xy8UbQ1fpWvA3op2eJUfgwNNN8h4Jeq42QkjRToCFuhvRUmloE/OaT6d5NHxhuHCujiqA/co1FOohGSrki0u9XAHor47U5lWGGM4k1PWhj1yYNGsCQ/fh464xIP9O25fpD+61kAumXu0KILXa9CQ9hmM8PBrwqIdmQ0WuVQWTzZljNoPqgGfDr+cciJ5LZLbe0NRg1Ck836bcJdwYzFZoE1T86QyKMytbwdpFqDbAVB+Ah2OwdoAT9qsWjjfSk4G5vHz4r9OzrCXXHy7+LNeZMvX32ZLxxlTHzwMrLyfaayIc98GBo1DUoxbo+qR91HIWa/IbEoQQWmntWsXvBAu8Atcq2vTPNCoHZZQOYB9b6CPsf2cYDdK4grWUOajPBEWKgBTdwmbqDt3KADjhGhWoCO6KTYiH6Ac4kmStobUIc4ikv3ZPTdu3N0pyQgutl0m+GkUY+NPyHJh7qHuVADigTaDUyb8LQ3AsaLkhLkIEbXLmmN2VAAbpxOkAiNZtSOHQjAi/CvAkKjTndpkN+ZVg/PbegTHAlkF0pzYhJSjGVAMTZQmrr6h3W+aB/dj1YBwcQIEHHMvw+tK0O08/z8nx6POvl4Q32h/uxLx/+nhSoW8RM9FGf7+AzN55Z+kn3xkqRn/f88FkXwDOjk14orYfK8PLK65iZkQRvZUF0Lr7+kxr3iH74jvAoKnViUYD8bwy2YOq7YIRtJm8bk2c2lKqbQBQrWJ365XAHv0dPNqtWoTJHgX5Lbi+2KbN1hU7NERaWYCmvSd6kwW6DtiG2TeCE0YZXkOwuqTPtvgzlarod+zok7hrd6baF1x/TxS1Vw8ueLMflQujkHTaGZiKcp3hauSX9s9MRdemhFg3LVCQ03wJxbTsF9ALsPrVM4zThL5W0VVACbvmle+dqTPGbLwns8dhOBXSnYg8Lw05Kw7ndFJjD6Gqm03bW5UmqfglDG4QmWXtHkXWW7K0g7AaeykmOrXb0rgBWMWvMpJ50BxMoMBKwb2Far8CBocMGC5Nu4mcn2/uP1wG3nTResJtsxDoFlVNw8Kr9wupIzh/+n7ZeON0NlC6qlWqxeyzVq89l2c0XbIebK93340nP5e/v94k4RNkNydnrb6QdNo32DZhzbKZOhYcu3SbAfJ+ktVBPeLvgUXRRxy0B0NH+t4xgKfJcWNyQpN6xUyVwKGiU952xu/9dU/qm3+215v/HlmGkBZ5bd7prmUO7whdt+OvZrWicq/ztOE8ZXoLmH1rpNZd+D3Sv4vV2cyRQdedT2s6U8dsT1l0gvb9ggPnHuxhAPk8xKG+A/1q0F9zGnMxkYM4kGejLLA1IOrHCJchpm1+GY1w5mA4ll81MusAF4w3oVaVFz/8zSA67zc2qdjT8K4hvJ4sZiCrwBszg3TBG54NgD9UW1YwoOObk6KMDlA1c+VEbVqkuSdbfTvJNudH2+Uf6C9oY2l1V9YdPwph9z0ITr7Fngz3XndbKEz7XnYMkhrtt7yZdCnRDrxCwzkZWVYDe8kblBArIs2mXV5R2w8NykpRa1L1eNo1iBJttd611nCn7zE0CN0YJU8Tl+JNO+1gLifhahK8Q9sX00Dl0uYH0ohNK0DpVnhjpDWdVwCrIbs+QY+869iOVgFjwQkemSCfOmYDnqjqKDo/xxPRHtfZwJncsd/Pz/g+6/UB0weyTBhsU7vQqhXrMKF3Q28+/Dtrm/IEbbmg/8wIgnGNbqR7PsMOOtpgedpN5P9K7fPmQvHG96Y8+exvbsipQm5sAnsH8OQDgFM4WWCF5Erwxliq+v3qltkj2LDnuFWYqE/GMbk7oloB1kmdRL0xnoTKQBit5lekkLWtKlB13foFXwe8MqQCWVySCZavsFRFmRhOinn5UJ9uYsqNK/ZLICHFkGk7G7g2ur4peuC5WJXR7bJ7k9TZCz0zodhTgZLVmNZ8RM3rLshEjxiJu5o5WLI2ruiO4tNo3+YE1+87Fzs6uhpmBgy4sq9FQpKh3H7EaWNOfe1gEuiLX2Mmhu+sQ3P7SnjOm87AqUkF+Q6rs3DcoKSreJMwPhxTbcMC5b6krjXgALD7cIHnJnfjdmd5iLNMWQ3eAOKhRfCIRrPDNcA51GXwsQjZEgaDq4YKFOaL35O1nJqUeS5ooatx51WKAYw8huDjErI1MTtuEX/7oXb4fIkaRsz3LXFRB2QmNf5fAeKsCG/QNRR8dOJFiz/Gh7tBYkfqOtL9yem+cLTEo2Mq831Nebu5tYDRaL+/SUgKaaf1W8t9JSvHm49SJngK1kFYOxD47vLLPzf3wKslZmIr8yrO2QW3UfZgun8k+9RwtFzE6f96hfUSy0cqnF2cNG5sw9ubR9oS71yZ+5vvX093yvWmnqUyO/j6Fru8eTl+gddiLB+tbNwGUN8EW8zG1uZSCU4BwCnZr0r2plyZjq4by5qWZ10cYsDy8Yq+wf75mtvYMJ2UwZ/LvDNR7OvBRGcRbypT58Db3y5lUs47f2KdxPJRyz037dORlnpfouj3S8lXzTqU2pPtw/ri56TfweFiLB+9WKfQV0ZLLrogCl+BavFFvak/sqflNtp7i56SF70PWBuxYFlTwCnsV3Xz9WG/vb9QknP+/B3WCixY1hhwCvlVmb0pTzb3F0hyOseY3mDBst6AM79flcebWgLJkV5ieoMFy/oDzpx+VXfOU602Wo8WMRnP+pjeYMFyIwBnDr8qvzfly7ZYul91vIrT7rBgwYCzFL9qPm/Kl52HfJkTcdy/wNqABcsNApxcflW3+BnBnz0oDXIw3GDBcvMAJ7NfVcSbQiHnrojhBguWTxZwsvlVRb0pRLab7aKXeDHAhcVYsNxQwMngV5XgTSGy2bhbwLOS/jnCmSksWG4w4Mzwq0ryplDZ4YS5CnPO+xImN1iw3HDASfOrSvSmCmKO9Fa5sVV+bJNTh5dauS00uAYAxxCbBJabBziJflW53lRQbnFs1tqcc2ms3FhuQzkHugHt9zK77VtnuCzxgKKShWyNdV0nJwvuY7TfUHXQL2feiWplAiY1nfp4uuSvDnBi/Spp4QvoNlNjZiSu+mNVucmOlHmUmnPoovamxAOF2hYp/VG/eTPCNsfDxp49Jd3FHrFknzYHn5SycHxDerQfquATkYWd9zI9lUJ+1aK8KVQuLt6CX7epKkNuR5w66ULXVf2mB22oFoCjXvUKso9Iep86Sf80r3C1sWqdYsUI3dSP3tyWqgzP72v24aLp+sxQOkVebl0CFuhb1cr2pjzOi08W1JfDSPwJpw9B7xQDTlHRO8cC7Zq9ci4tbe28cKpqbiEPp38s2xYEEvQG5kFLymuDQopyMoiTXNNqAs0DOJR18BgMUpfRkaBds8oNJDhgSFYUlbtDG0b7VziDG4bwmM956Jf6C0PulWQzcFhjSKBs0saL2f9kXCpykReHp6BDWV2TV8IYP8oMVNOABmd2rUU7GXDMs7S1s90LirHO1QUzaLvy/IAGNzKEMzXZwWDSNqbiTfonlREDGh2yzncBU6HMs5Hz8jpdB/Wy6ttPAGUeWXrIjiUSYsApi+cALCUKQQIJIjObvEAzNOwpKjB9Lr7GsLNBXz6qqDf4bSkmAte2U3wkBnSNOTAcy5HzqTZHMsoqx6zb/2GA0hx8Igq8gW14TYViCCK6HFQB4FyA6Gqgm4wQlOF6ORgjdY+OzFOkZ5msnBlviGXPBjEThylgHiFCp3yo4WJuxfGve715hqKBq7mGSbGAiF/fRUI/j7kWxQCS+NjUmsSWvaZU5jtDtekBOJ6GYASQLv8epK6KIkAXb2UgoN35iYZSmfjwwldUSOoZ4YZrcCrzi/Vhsmasz2HmxOlFXGiywowrV9M8NwTM5MtNA0Oao6kGUpwT2fWFqqx90HCWJyY5hRoHhgNhLE4RewyjqnZgnmGVSK6bPTQp2BBEwvznPASVmOOaxJahANo7OYbEUjoGHCylvpaWYC3XAhD8RO+9ln1EYkMx1thZTj/JKoEDFcfC2LdgrmG9d7cqinH3o8EXUQ+DZOAWUxn5f2jwBln68jfDE+Cb5mUCmWiG37VIxqAXGCBFAao2GcywE6LO1mwe1lcReEy9IaBE0LimTUVmv3rGg5qcwvkcQ52AaYy/HzdGoWaBFOwgV9XJqm6BSoNVev601Iw5ZVl1OCU5K8qjdNArWcVTpLkMNMNzfA+QU6o1iOKTqQA0LWi/Bt81xet7Vnptn1H7yD1I/9EZbW2PVatg415HevPlZyZ3PzedBO7a3creojY3N83fCIJYPZtxidvcKEjTBS8hw3y9vQGUkT4RNu2PwDuOZ71RG4Zs9F/uPLitVqe1TRK4eT55x6BZm3ffMV+zG/DPLfjZpm+N5Je7m0BRxlqz9s6Lx3L/cru1O6ZAdQemB2n/eoeltH/WPrzdZj/b8MvA025IHO5tb29sOqP9yyYYJacKdrbe2LenhLf2P6Zi5W3aGIX9LQAvhgS4c+33E2iylwbH4r/iDIC6PfVgXL/aMWaR25G+vLsFJOoDffetfyHyb+YQFd14kI3dcRB3GxR8va2FUIj7yvKFzSfb3EW3+xH3DnY+29jiNqnbArV9WzUfl+DFh7dr/43/y8ZfquZ17v+3nZ271fUMn2KGs46yx8Lrd6PxtL9bZ0HDXfz6bI8e36GBdDXhz2cGZIAoob7HBLh1OMI+gL2RsWoy+8LOz5bd/cQwOsnoDfYiuDISIt1XzEjyKSC/PuvZf5weMYA8BJ/TBuH/Q+lQ31RY11rYRyTonRm3JSfCd0+chZl8AN7oY+sH9pvjlGPXGDOt9nQ6MobH7YkTrzIl5YaEyLpVkMAukklR6DHvLK9X/nLLpIyR2BOAMhxNwSnXRiqedHOVvi8a78OgY636kft7aVQ//4plH29CctA1P+EPE3wLtM2eqhi+a4sk2SC4sKA3hSG8oQ6Awh5B1aA/LUAjkW2DKWlWoEqwx71lYu9jkz1tWm40O2iAUc2M17F9ZR1VGzOcNRTqv2mdE9Ww22tF2qGoqaM579/KZxfMNvz1nTKYGSSZiqCCsqDJVLN5gWG6ym/vzDXzWvrLpn3tD/rFe/XdxQanBonTfuO3t+/tdfqD+nDHYQPg+prjwKby69T0GiYT9k+X839JaS/fmkzog8FKqvb9iG+uf3v33l6jdWJ/mmwGf9kG4D+n4MMH42YTbgc5+jnxhvf/AuAvdwevXumcgTc/vLsNrpNdqjZ0MGz79ttrh+qcKslj5PZA/9hiNu/HtxnVpU7bXGd67y+DN6/+fPtmd5NCeMx78NAgJL+/kc3s/Lu/jDyOwfPSy3++N1xc9WJ0e2NLDbCwOxvwjP4QrBO7v91/+VY1fqcoFzy4deH+lfkXSjvtnr7/58QA2v+sboGqSUnl6fkFQ3aYTe2Hf364uPjw7s2GMZXjtdwqiLNUa+hQ8dpTxVHW6bM+aJEADTlkI6XwOeAFAUlynDoEhwPwyDGElummBVjRdhBvhNc+PCgae98nI8b/d+qnFuVR2Imzb5aiwW+OvXMs4K2T4InHdM/n9gPQ4hIJjrlouwxrIIFa4I+xN2RFMPiJBQMFDnoAjKbKEegnwzhNO1eHVkLLkC07q5UwRg4MTmxkI1qA9PouURr8qtXtmoWs8DcNtAJRIgB6lGrPgcS5c0vVBh19al9K/0kx6BQqI6ABObiAsEznZOqMSH4KWa/y5wsSPJWmU0ntGd+BBlN7Zz6SfnJ60gHKr8BZLnTdIMX9E4ABB0sWabXe+J7N9ERx6LMtKtCyXUV+Dvf3/36fCht4E7hxGmvXGRsg90G1FwBacP8GiC5+EQLQNOrcdVBce+CB5trtgRlGNf8h0hLCaaAEEre6BZ9rDNCBJ9zQGHAf1q201WkfNAhApdSz617ablequMgzSR6jcU/ZC9sYOO/CR40Wxj86bq7+JpAjN8alVNwvXXlP+qWAhIThM0CzQSejElpEyEMW8TzVF6Dp/J2lwXPHr/3dWBzQdKAOeAibyOKxnniDAWcNpRYs5zsHfABwsor8kwKB+N3BPse4oQpLaT1VNE0FygGGsxkIXIajQqDuO+KnZ2OPL5w5XgUNnqLoMXJsMIgjbBJDm/ZNduFPwiTo+cfd8C4w0zR9Z2LUKZC3UybkH89cROcdWjI+6iaPkQY9GaGW3q4PFuyjO0CqgWFqQ6+YSXfBj6A1FEwNhy0ws5NIJJ0Bg+B4yBqiDY4eSDQxePp86JOru+B45P4kwhdrqtw4aLx2wrLB/EK/RfP+ggdB5m1+8EWFaYNrwSRIXmKXAF5eBQ4EEEivbwXVoQIgUvBhLPjeuKDCKHDqezsV19nwmNlp2/n0ZsBNI++A5IT+yaCiWvY5ESscGZiEhBsOxQFg+OfOaE0f5yKlRMUbXF987V4WJI+RBJeelWu0j/SQ7PsoPdpH0UIWz5A8uTtKEQRj8b1DEU2+q+ZEBylucFmZ9lrtJy7uIleq6qqKEFoWSLpThUTwEsSAgyWbMCAYV51KPBJouQJNKTPiQH0oqYCoCiJ5YOVbzHJb31q6k0og5BFuYQaHX55VJ0BmK71JvR1IAckUojm7tmVSrF8RJ4H60DYqRT8cVydXem3Sm94zmQWRWCOiM8I+vKaBnW8KrvtxNwS7huFuOcg0Yo6pCbOdJRfc1EKgHTvGhscmwPTpwyvv2UaCgvKbIOWUxGOfIY5d4qeFqWIQFqvhJSd00bMWaU8aogcsD7gADzo3RtvSO47b3AcYcLBkEzVcQHGFItDXgGVy1PGa7tNUP1Ee0KxVPhIMxYb8fCo0EFIENRaORGZU3ZVeK40djxyNWuOG5LkEZ6IcCQFJzp9lHsBNWntXZ17XKKWri2pyTZq5nZskoTwGcuUxqKHAGntDjr6w3BgbHccGYDGZinCHYjAzHT/GBgr6yK7WiSSj70YPQMmW4JVIToaU/aa0MKnT6DHyEwJs7mVYGFYAb9Lcl8/G8bfeod0b7A7UMOBgmVcqKBIYBCDLDmciuBtQltlD+13LApeYmD5nwV9/RoMLfpGranhyyPeYa9/O9B5pxyRkwEfdvUmgi6CS1kuGbxmcS2FlaBtdoGIj9oYk4Hu6AmjV8WdOVbDPZuB/eqgaJH6MQ7EeO9gKjxAkGEBpCiCWPpYfqfFLwyao6uhPcKYCMO5Awb5d90PyoD+MvHSlR1l3vJbWttIYB43XTqhQtJYQEPvgMrZUaO6HlhJlYF+WCqaJAqTGUPxQ26AkU9i5QC7vbgSqAppB1zLCXZ8zupJtsj+QdCf6MAyu+7E3vDQX+iv3Bi3a/FGnZt+pFuZysWOsBjiO/5UAWPGBJZsB+iYCE5vuhZigx0QGrnEB2kTYqd4CcTdh9owv7xtfp9hvaeUkDCpCC/StDxLqGcCAgyWjSCEPPtCqVdaAkiUeOIkEBlQ7uToKsFrmu1AGDPX9LwGNWkL70K/DoakaYkSian1O1VBDJr7ds6+JOnHUYTuxm4wABoiLJwcNO/aGE9OqHzn4zAj2Xm09ywZrMjQ1cWMcBULJwjfu/bfRkVUCw6QMMPGmYPSItt/UIIhnRKT3btjL7IU2ed11/mEsIv2ucPjt4XeH5FE0DcWIhvds3r5aUTHgYMksfRalOJwYyF1fJOeVQQAswoY9AGTFXp+Rsh7RK/GwbhXsr3MVDCPzrOjjCSt4XIgQR/rUcQ4Q9tQkd1jLfUHHW2H5xEb3wWRwNcRC4m6oQ4NGsaDN2I/Cm0Ciso0M00OHXKy4MZJovQzRIt1pu0Z9ywloBi6175NCwa00VrUW+spaLAjuq42UOozA5+iPX5L2OiCw0o8ng6fd67HU/zFm2Tk2phBe3TPu0AcYcLBklgFoI8ZmsOvX+bfhaQEkse3Z8sX0HrjrcQCKB+cQdTUCDV2gZNbS+bw+cHl44UPDxKECLwDLIMTsWrGYCgpwQmpkBaUgj4OWHH/DI61VedqXeJt4KFMDICcgyxaiUAYsdoySggyhQYKR/wOI8RydR4DeY1RJzX6NxCvwiAjMcm8afjUBWjbp0/cRRkQDaCHIHTAyS/0GP590TmI14jkFtLpiILWKAQdLdrlSyG88xLl3F0j9oKlUM1yjBshQ3Z4INOgwnRbhOf0A9fbZ0LVHkP/K+SgptJHaNzPGgsQ0GIcwGAv3F87n2X3XQnug5VoPc98w5tdJQx4imMa1QLj5VNwNNQMS1ZOXu8af7tEWCQNfwSzorIZ9mLgx9gHvjuj+PaA536HY4DyDKTpORfVwvlK/doZ8Dlh3HgF5nwU9JRgcYuzRowgoeojDPASwA20C6WGQi1MBmeoiMdXH4EttjZUbb95cQ3m3wW7b+/WI9t0NzSmQJW+Zasdtg9EVYLarM2Kxd8FOYI+gYUf/tDjChx2K3TF7R5C397fAcytBS9zfoBvq5l1DqeHkAzXhaOur7yccdWc8+QCYB/ufmTuHbGIgbAi7gKWcVA31Lxss+KczxJ3NO2bzBYL7ggV9GyeVW1vszoUxdF783LBV5Y9EhnOn7jR7oNgHJlpuuHaZfMMKX7tSQWNv03A8AbXR3ATUzpBgZnTMfwTki8Av4scImxufWQ08mLviJjxyLkoJ4E8PMKj9DXDq0BVmu9bapKj3ijvhFOXe5t0tdnP8wQ4Q7YL+PwMhnQcbry7GfzFYFuEh19UFV7+2a424gxr43XZ0x7epDZpk+c/aIvfwjijencLtwDbQjb3ri+1btebbNWY4BDbvdZR9AcCevkVv016/KeJvJIDmSQ1OP4b0zXmcuZlJeeZSd/PL7k9ESzR7KVAt43o9+9p/RRfYvhmIcc6nMi+jGS6L+Xe3oxTvbGPsVfThlP3c+qoylLy/KaOJufeo7/kNZisH6appVfQNjtPLcJRxU/VqTOAP0xk3NM926ku7ED31YDAezUgK/3egdEMtqmLHSD5iARzJWy3/jCNuq2qWZ4/s7frEQ4MC9apWUz7isT2JylhXFfMFmg8gv5x6V1JGOlvlSK/LGUOpOlHjDNdX+00AJ/d4Wnrp1RwzhyQYqDpXMW7gFSccWhOjsD2duuu0L/xHsDeiwY3+SpdzbBYGnE9KOM4JJXiN4/h28BPph2Q6R6J0Fct7sH7yzrgz+7zY134BXQsMieQYCnK0CvxFj4xD+9lNOrld+NzPwyNklfUzUz4Exgj5tY97R+OWi3upN7TNHKLxqri2he4dOLilV0grTSSNAYls9YwdozciFz0tHPcs3T1eFv5kzOP3yBie64+d8XqFTELDgVEPzhCU12j7EbRN8JPbRajhRpq9BofMvoF/8kj2fzLuFCoVIuG9u6MuBhwsueUezZFQ1vqu9vN7stn+z9BSyQojpJ8xyR0Y67WlsU+qtvKjZ2pSHCNIY1V1rWG/AUiL2WjX+sSAKMVHC64BjHEMgeJqNlUhG5XJzub1pnylD5gvLgwWpvQn7s5KkmOa12/0wPkPRLNm7iSXKlI61yeqbJ3XaPj6jJIB+b3xm6fqrBuSwl1zTgx77dHmCVzSJDmGY9sowoW6M8fIsjTf1xWXDzH7DOl/dV9AsJ+FbGNc5bVNdVzpX4n8hTmavt/2k9gz2Ip2cS4hLNaGqwBa/uQF8amW8Z4V3T9X2EC7IyXEgwdBcOG2TsnaWp8cjAFnjd9NJabihrGanTO7Z+m2yzzunxBVkWHIXt20Mtd5QpbCwK2mRE1hqPNY/hG3+Qk9xJuoBpuex/YxJzLWvpLQ/ST5Nbh4OZ19QwK0HJQhQ93XI2KRJZNOXBtOoqSFe1nEjzH0OAxluEL2fYg6RVXGcm3sfwLdWWGdOpX2Qpn/v727eXEaiAIAPsEs0SwbLNj60ZrVvSmLsB720P//rlcPHtaT0GKhCw3RxNqPWNl4WYSVRH+/cwh9CX0zw7y8CXVal/XbRRHK2ebXD5Zfbx5bc/Oo9ElevGsNSnmz6jwknFX9cr7w1+Gva4bP9DRKJ5MsTXoYwh0MhsnZeRyibHPrYdaZOG/7bibTdlVBdDZteoVdXlycRiG5jLLpoNMv1bdU/6hmQrO6CqtVT0O4g++Byu0KZL3c3HrWnTjLW1/XTk3rxZOkWVvFYVx+zj+FvONHT6rDgX5YhnEr48Qvdh19hs3MJxmGR1lRdDoIMxzoh7KKX3+8/jXx2+61bw8vPvQ/y8PTB+HDutNBKPyDnrgeHY2e3z8ZVeF7SJKHbzbznV23w2/PwnKehex42+riqtsx2KWCvhjEJ/vVU7Gv4Zk1e+aDV8WXfRHEb7uREg7wx9LxzwrFQxnzRvY4OdrloPdd3yGQcKBfKSeuwnFVZ+3uimlW35tXng8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L/4AaTVf//Lk7qqAAAAAElFTkSuQmCC" alt="南臺科技大學校徽" style="width: 100%; display: block">
+                </div>
+                <div style="background: #FFFFBB; font-size: 0.83em; font-weight: 700; display: flex; flex-direction: column">
+                  <div style="padding: 0.4em 0.6em; border-bottom: 1px solid #000000">南臺科技大學 學務處--課外活動組/06-253-3131#2211<br>臺南市永康區南台街一號/ http：//www.stust.edu.tw/</div>
+                  <div style="padding: 0.4em 0.6em">活動負責人 <span style="color: {{pv.leader.c}}">{{pv.leader.t}}</span> / 電話<span style="color: {{pv.phone.c}}">{{pv.phone.t}}</span></div>
+                </div>
+              </div>
+              <div style="margin-top: 0.6em; text-align: center; font-weight: 700; font-size: 1.333em; line-height: 1.4">
+                <div>南臺科技大學<span style="color: {{pv.year.c}}">{{pv.year.t}}</span>學年度{{pv.term}}</div>
+                <div><span style="color: {{pv.org.c}}">{{pv.org.t}}</span>辦理「<span style="color: {{pv.type.c}}">{{pv.type.t}}</span>」活動企劃書</div>
+                <div>活動名稱：『<span style="color: {{pv.name.c}}">{{pv.name.t}}</span>』</div>
+              </div>
+              <sc-if value="{{noCoverImg}}" hint-placeholder-val="{{true}}">
+                <img src="assets/cover-seal.png" alt="" aria-hidden="true" style="display: block; width: 31%; margin: 3em auto 0">
+              </sc-if>
+              <sc-if value="{{hasCoverImg}}" hint-placeholder-val="{{false}}">
+                <img src="{{iv.cover}}" alt="封面圖片" style="display: block; margin: 2.5em auto 0; max-width: 33em; max-height: 23.6em; object-fit: contain">
+              </sc-if>
+              <div style="margin-top: auto; padding: 0 0 4em 3em; font-weight: 700; font-size: 1.333em; line-height: 1.55">
+                <div>指導單位：<span style="color: {{pv.guide.c}}">{{pv.guide.t}}</span></div>
+                <div>主辦單位：<span style="color: {{pv.org.c}}">{{pv.org.t}}</span></div>
+                <div>協辦單位：<span style="color: {{pv.coOrg.c}}">{{pv.coOrg.t}}</span></div>
+                <div>活動時間：<span style="color: {{pv.time.c}}">{{pv.time.t}}</span></div>
+                <div>活動地點：<span style="color: {{pv.place.c}}">{{pv.place.t}}</span></div>
+                <div style="display: flex; align-items: center; gap: 0.3em">指導老師簽章：<sc-if value="{{hasAdvisorSign}}" hint-placeholder-val="{{false}}"><img src="{{iv.advisorSign}}" alt="指導老師簽名" style="height: 1.9em; max-width: 9em; object-fit: contain"></sc-if></div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- 內文 -->
+          <sc-if value="{{isP2}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-direction: column; gap: 0.15em">
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>一、</b><div><b>活動主旨：</b><span style="color: {{pv.purpose.c}}">{{pv.purpose.t}}</span></div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>二、</b><div><b>指導單位：</b><span style="color: {{pv.guide.c}}">{{pv.guide.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>三、</b><div><b>主辦單位：</b><span style="color: {{pv.org.c}}">{{pv.org.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>四、</b><div><b>協辦單位：</b><span style="color: {{pv.coOrg.c}}">{{pv.coOrg.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>五、</b><div><b>指導/帶隊老師：</b><span style="color: {{pv.advisor.c}}">{{pv.advisor.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>六、</b><div><b>活動對象與人數：</b><span style="color: {{pv.people.c}}">{{pv.people.t}}</span></div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>七、</b><div><b>活動時間：</b><span style="color: {{pv.time.c}}">{{pv.time.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>八、</b><div><b>活動地點：</b><span style="color: {{pv.place.c}}">{{pv.place.t}}</span>。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>九、</b><div><b>有無收費：</b>{{pv.fee}}</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十、</b><div><b>實施方式與內容：</b><span style="color: {{pv.method.c}}; white-space: pre-line">{{pv.method.t}}</span></div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十一、</b><div><b>一般規定或注意事項：</b></div></div>
+              <div style="padding-left: 3.2em; font-size: 0.917em; display: flex; flex-direction: column">
+                <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(一)</span><span>活動前實施宣導及叮嚀有關性別平等宣導課程強化性別平等觀念，以預防學生活動發生疑似校園性侵害、性騷擾或性霸凌事件，並於辦理活動時在工作及人際互動上，應尊重他人及自己之性或身體之自主，勿有涉及霸凌、性別歧視、性騷擾、性侵害等名稱及內容之活動。</span></div>
+                <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(二)</span><span>如活動中有使用危險器材(化學藥物、用火等等)，均需將相關防護及急救措施都要完整寫出來，確保傷害降到最低，也讓工作人員能依此去做到相對應的防護動作，並做行前訓練確保活動安全。</span></div>
+                <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(三)</span><span>活動中請隨時注意參加人員之身體狀況，適時提出協助及詢問狀況，並提醒避免單獨行動以免發生危險。</span></div>
+                <sc-if value="{{pv.hasExtra}}" hint-placeholder-val="{{false}}">
+                  <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(四)</span><span style="white-space: pre-line">{{pv.extra}}</span></div>
+                </sc-if>
+              </div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十二、</b><div><b>預期效益：</b><span style="color: {{pv.benefit.c}}">{{pv.benefit.t}}</span></div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十三、</b><div><b>緊急應變措施：</b></div></div>
+              <div style="padding-left: 3.2em; font-size: 0.917em; display: flex; flex-direction: column">
+                <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(一)</span><span>如遇緊急狀況立即撥打119並通知帶隊老師後回報校安中心。</span></div>
+                <div style="display: grid; grid-template-columns: 2.4em minmax(0, 1fr)"><span>(二)</span><span>性平宣導：</span></div>
+                <div style="padding-left: 2.4em; display: flex; flex-direction: column">
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>1、</span><span>注意性別平等意識與人際互動界線，當你的行為讓他人覺得不舒服的時候要立即停止，別人不拒絕不代表你可以。</span></div>
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>2、</span><span>禁止嘲笑、性意味的雙關語、攻擊他人長相或身體等，或其它與性相關的言語騷擾。</span></div>
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>3、</span><span>禁止對他人毛手毛腳、偷窺、偷拍等騷擾行為。</span></div>
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>4、</span><span>若遇到不友善行為，立即表明自己感受及離開現場，並告知師長。</span></div>
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>5、</span><span>若發生性侵害、性騷擾及性霸凌，可能面臨學校記過、退學懲處，也面臨法律責任，良民證留下刑事紀錄。</span></div>
+                  <div style="display: grid; grid-template-columns: 1.6em minmax(0, 1fr)"><span>6、</span><span>若發現上述性平事件，向校安中心(06-301-0000)申訴及求助。</span></div>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十四、</b><div><b>人員配置表：</b>附件一。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十五、</b><div><b>活動流程表：</b>附件二。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十六、</b><div><b>經費預算表：</b>附件三。</div></div>
+              <div style="display: grid; grid-template-columns: 3.2em minmax(0, 1fr)"><b>十七、</b><div><b>【注意事項】</b>請依項目勾選，並由負責人詳閱後簽章。</div></div>
+            </div>
+          </sc-if>
+
+          <!-- 附件一、二 -->
+          <sc-if value="{{isP3}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-direction: column; gap: 1.6em; font-size: 0.917em">
+              <div>
+                <p style="margin: 0 0 0.3em">附件一、人員配置表</p>
+                <div style="border: 1.5px solid #000000">
+                  <div style="display: grid; grid-template-columns: 13% 16% 16% minmax(0, 1fr) 16%; font-weight: 700; text-align: center">
+                    <div style="padding: 0.35em">職稱</div><div style="padding: 0.35em; border-left: 1px solid #000000">姓名</div><div style="padding: 0.35em; border-left: 1px solid #000000">學號</div><div style="padding: 0.35em; border-left: 1px solid #000000">工作內容</div><div style="padding: 0.35em; border-left: 1px solid #000000">備註</div>
+                  </div>
+                  <sc-for list="{{staffPv}}" as="r" hint-placeholder-count="9">
+                    <div style="display: grid; grid-template-columns: 13% 16% 16% minmax(0, 1fr) 16%; min-height: 2.2em; border-top: 1px solid #000000; text-align: center">
+                      <div style="padding: 0.35em">{{r.title}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.name}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.sid}}</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: left">{{r.job}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.note}}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <p style="margin: 0 0 0.3em">附件二、活動流程表(含前置作業、場復)</p>
+                <div style="border: 1.5px solid #000000">
+                  <div style="display: grid; grid-template-columns: 10% 17% minmax(0, 1fr) 22% 14%; font-weight: 700; text-align: center">
+                    <div style="padding: 0.35em">日期</div><div style="padding: 0.35em; border-left: 1px solid #000000">時間</div><div style="padding: 0.35em; border-left: 1px solid #000000">活動內容</div><div style="padding: 0.35em; border-left: 1px solid #000000">地點</div><div style="padding: 0.35em; border-left: 1px solid #000000">備註</div>
+                  </div>
+                  <sc-for list="{{flowPv}}" as="r" hint-placeholder-count="8">
+                    <div style="display: grid; grid-template-columns: 10% 17% minmax(0, 1fr) 22% 14%; min-height: 2.2em; border-top: 1px solid #000000; text-align: center">
+                      <div style="padding: 0.35em">{{r.date}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.time}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.content}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.place}}</div><div style="padding: 0.35em; border-left: 1px solid #000000">{{r.note}}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- 附件三、注意事項 -->
+          <sc-if value="{{isP4}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-direction: column; gap: 1.4em; font-size: 0.917em">
+              <div>
+                <p style="margin: 0 0 0.3em">附件三、經費預算表</p>
+                <div style="border: 1.5px solid #000000; font-family: DFKai-SB, '標楷體', BiauKai, 'LXGW WenKai TC', serif">
+                  <div style="padding: 0.35em; text-align: center; font-weight: 700; font-size: 1.09em"><span style="color: {{pv.name.c}}">{{pv.name.t}}</span> 經費預算表</div>
+                  <div style="display: grid; grid-template-columns: 6% 15% 11% 11% 12% minmax(0, 1fr); border-top: 1px solid #000000; font-weight: 700; text-align: center">
+                    <div style="padding: 0.35em">項次</div><div style="padding: 0.35em; border-left: 1px solid #000000">項目</div><div style="padding: 0.35em; border-left: 1px solid #000000">單價</div><div style="padding: 0.35em; border-left: 1px solid #000000">數量</div><div style="padding: 0.35em; border-left: 1px solid #000000">金額</div><div style="padding: 0.35em; border-left: 1px solid #000000">備註</div>
+                  </div>
+                  <sc-for list="{{budgetPv}}" as="b" hint-placeholder-count="5">
+                    <div style="display: grid; grid-template-columns: 6% 15% 11% 11% 12% minmax(0, 1fr); border-top: 1px solid #000000; align-items: stretch">
+                      <div style="padding: 0.35em; text-align: center">{{b.idx}}</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: center">{{b.item}}</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: right">{{b.priceStr}}</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: center">{{b.qtyStr}}</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: right">{{b.amountStr}}</div>
+                      <div style="padding: 0.35em; border-left: 1px solid #000000"><span style="color: #C45911">【{{b.source}}】</span><br>{{b.formula}}</div>
+                    </div>
+                  </sc-for>
+                  <div style="display: grid; grid-template-columns: 21% minmax(0, 1fr); border-top: 1px solid #000000">
+                    <div style="padding: 0.35em; text-align: center">經費總計</div><div style="padding: 0.35em; border-left: 1px solid #000000; text-align: center">{{totalStr}}元</div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 21% minmax(0, 1fr); border-top: 1px solid #000000">
+                    <div style="padding: 0.35em; text-align: center; display: flex; align-items: center; justify-content: center">經費來源</div><div style="padding: 0.35em; border-left: 1px solid #000000">學輔支應：{{srcSub}}<br>社團自籌：{{srcSelf}}</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p style="margin: 0 0 0.3em">【注意事項】</p>
+                <table style="width: 100%; border-collapse: collapse; border: 1.5px solid #000000; table-layout: fixed">
+                  <thead><tr>
+                    <th style="width: 12%; border: 1px solid #000000; padding: 0.35em; font-weight: 400">項目</th><th style="border: 1px solid #000000; padding: 0.35em; font-weight: 400">內容</th><th style="width: 30%; border: 1px solid #000000; padding: 0.35em; font-weight: 400">請勾選</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr>
+                      <td style="border: 1px solid #000000; padding: 0.35em; text-align: center">自我檢核</td>
+                      <td style="border: 1px solid #000000; padding: 0.35em"><sc-for list="{{checkPv}}" as="c" hint-placeholder-count="8"><div>{{c.n}}. {{c.q}}<b>{{c.bold}}</b></div></sc-for></td>
+                      <td style="border: 1px solid #000000; padding: 0.35em"><sc-for list="{{checkPv}}" as="c" hint-placeholder-count="8"><div>{{c.n}}. {{c.marks}}</div></sc-for></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #000000; padding: 0.35em; text-align: center">說明</td>
+                      <td colspan="2" style="border: 1px solid #000000; padding: 0.35em; height: 4.5em; vertical-align: top">
+                        <div style="min-height: 2.4em; white-space: pre-line">{{f.checkNote}}</div>
+                        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 0.3em; padding-right: 1em; min-height: 2.8em">負責人(總召)簽章：<sc-if value="{{hasLeaderSign}}" hint-placeholder-val="{{false}}"><img src="{{iv.leaderSign}}" alt="總召簽名" style="height: 2.6em; max-width: 9em; object-fit: contain"></sc-if><sc-if value="{{noLeaderSign}}" hint-placeholder-val="{{true}}"><span style="display: inline-block; width: 9em"></span></sc-if></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{hasPageNo}}" hint-placeholder-val="{{false}}">
+            <p style="margin: auto 0 0; padding-top: 1.5em; text-align: center; font-size: 0.83em">第{{pageNo}}頁</p>
+          </sc-if>
+        </article>
+        <p class="paper-note sub" style="max-width: {{pz.barW}}">紅字是還沒填的地方，跟學校範本一樣。字型以標楷體顯示（電腦沒有時用相近的楷體）。</p>
+      </div>
+    </aside>
+  </main>
+ </div>
+  <sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+    <div role="status" class="toast">{{toast}}</div>
+  </sc-if>
+</div>
+</template>
+<div id="dc-root"></div>
+
+<script src="js/vendor/jszip.min.js"></script>
+<script src="js/vendor/html2canvas.min.js"></script>
+<script src="js/vendor/jspdf.umd.min.js"></script>
+<script src="js/vendor/morphdom.js"></script>
+<script src="js/fill-docx.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/template-b64.js"></script>
+<script src="js/dc-runtime.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/pwa.js"></script>
+</body>
+</html>

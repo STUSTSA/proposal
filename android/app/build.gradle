@@ -1,0 +1,39 @@
+plugins { id "com.android.application" }
+
+// 版本號：GitHub Actions 每次建置的流水號（APP_VERSION_CODE），本機建置時是 1
+def vc = (System.getenv("APP_VERSION_CODE") ?: "1") as Integer
+def ks = System.getenv("APP_KEYSTORE")   // 固定簽章（GitHub Secret 解出來的檔案路徑）；沒有就用 debug 簽章
+
+android {
+    namespace "tw.edu.stust.proposal"
+    compileSdk 34
+    defaultConfig {
+        applicationId "tw.edu.stust.proposal"
+        minSdk 24
+        targetSdk 34
+        versionCode vc
+        versionName "1." + vc
+    }
+    signingConfigs {
+        if (ks) {
+            release {
+                storeFile file(ks)
+                storePassword System.getenv("APP_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("APP_KEY_ALIAS") ?: "proposal"
+                keyPassword System.getenv("APP_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig ks ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+    // 網站檔案在建置時由 workflow 複製到 build/web（見 .github/workflows/build-android.yml），打包進 APK 的 assets/www
+    sourceSets { main { assets.srcDirs += ["build/webassets"] } }
+}
+
+dependencies {
+    implementation "androidx.webkit:webkit:1.12.1"
+}

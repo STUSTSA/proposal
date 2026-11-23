@@ -1,0 +1,16 @@
+{
+  "name": "活動企劃書產生器",
+  "short_name": "企劃書",
+  "description": "照著步驟填寫，一鍵匯出符合南臺科技大學課外活動組格式的活動企劃書 Word 與 PDF。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f0e1",
+  "theme_color": "#f5f0e1",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
